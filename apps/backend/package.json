@@ -1,0 +1,54 @@
+{
+  "name": "business-card-manager-api",
+  "version": "1.0.0",
+  "description": "API for Business Card Manager application",
+  "main": "server.ts",
+  "scripts": {
+    "start": "NODE_ENV=production node dist/server.js",
+    "dev": "nodemon --exec ts-node src/server.ts",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "keywords": [
+    "business",
+    "card",
+    "manager",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^6.7.0",
+    "helmet": "^6.1.5",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.1.0",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.9.1",
+    "xss-clean": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/cookie-parser": "^1.4.3",
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/hpp": "^0.2.2",
+    "@types/jest": "^29.5.1",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/morgan": "^1.9.4",
+    "@types/node": "^18.16.3",
+    "@types/nodemailer": "^6.4.7",
+    "jest": "^29.5.0",
+    "nodemon": "^3.1.9",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}

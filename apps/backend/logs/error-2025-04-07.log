@@ -1,0 +1,223 @@
+2025-04-07 13:06:57 error: GET /api/v1/connections: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 14:19:27 error: POST /api/v1/auth/login: Invalid credentials
+Error: Invalid credentials
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/auth.ts:111:19
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-07 14:19:37 error: POST /api/v1/auth/login: Invalid credentials
+Error: Invalid credentials
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/auth.ts:111:19
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-07 14:28:32 error: GET /api/v1/auth/logout: Cannot read properties of undefined (reading '_id')
+TypeError: Cannot read properties of undefined (reading '_id')
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/auth.ts:156:23
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+2025-04-07 14:32:13 error: POST /api/v1/auth/register: E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "ian.test@email.com" }
+MongoServerError: E11000 duplicate key error collection: test.users index: email_1 dup key: { email: "ian.test@email.com" }
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/node_modules/mongodb/src/operations/insert.ts:85:25
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/node_modules/mongodb/src/operations/command.ts:173:14
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-07 14:35:53 error: POST /api/v1/auth/register: Email already in use
+Error: Email already in use
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/auth.ts:66:19
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-07 14:36:28 error: GET /api/v1/auth/logout: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/auth.ts:157:23
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+2025-04-07 14:38:16 error: GET /api/v1/auth/logout: Cannot read properties of undefined (reading '_id')
+TypeError: Cannot read properties of undefined (reading '_id')
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/auth.ts:157:23
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+2025-04-07 14:43:35 error: POST /api/v1/auth/forgotpassword: There is no user with that email
+Error: There is no user with that email
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/auth.ts:280:19
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-07 14:43:58 error: POST /api/v1/auth/forgotpassword: Email could not be sent
+Error: Email could not be sent
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/auth.ts:333:19
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-07 16:41:22 error: GET /api/v1/businesscards/share/67f1850c99dc4f1bbb71d96e: Activity validation failed: type: `card_viewed` is not a valid enum value for path `type`.
+ValidationError: Activity validation failed: type: `card_viewed` is not a valid enum value for path `type`.
+    at model.Document.invalidate (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/node_modules/mongoose/lib/document.js:3219:32)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/node_modules/mongoose/lib/document.js:3012:17
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/node_modules/mongoose/lib/schematype.js:1368:9
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-04-07 21:00:55 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:00:55 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:00:55 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:00:55 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:00:55 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:00:56 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:00:56 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:00:56 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:00:56 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:00:56 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:01:25 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-07 21:01:25 error: GET /api/v1/auth/me: Not authorized to access this route
+Error: Not authorized to access this route
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:34:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)

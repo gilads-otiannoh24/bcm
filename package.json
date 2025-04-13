@@ -1,0 +1,37 @@
+{
+  "name": "busness-card-manager-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "shared"
+  ],
+  "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
+    "@supabase/supabase-js": "^2.49.4",
+    "axios": "^1.8.4",
+    "chalk": "^5.4.1",
+    "chroma": "^0.0.1",
+    "classnames": "^2.5.1",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.4.7",
+    "eslint": "^9.24.0",
+    "jsonwebtoken": "^9.0.2",
+    "jspdf": "^3.0.1",
+    "jspdf-autotable": "^5.0.2",
+    "jwt-decode": "^4.0.0",
+    "lucide-react": "^0.487.0",
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.13.2",
+    "punycode": "^2.3.1",
+    "react-hook-form": "^7.55.0",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "x-xss-protection": "^2.0.0",
+    "zod": "^3.24.2",
+    "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.9",
+    "daisyui": "^5.0.12"
+  }
+}

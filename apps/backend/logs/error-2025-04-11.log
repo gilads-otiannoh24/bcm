@@ -1,0 +1,267 @@
+2025-04-11 00:08:22 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 00:08:22 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 00:08:22 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 18:19:32 error: GET /api/v1/settings/me: Setting not found for user 67f1604e3f97b5846f57f692
+Error: Setting not found for user 67f1604e3f97b5846f57f692
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/settings.ts:57:9
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-11 18:19:33 error: GET /api/v1/settings/me: Setting not found for user 67f1604e3f97b5846f57f692
+Error: Setting not found for user 67f1604e3f97b5846f57f692
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/settings.ts:57:9
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-04-11 19:19:14 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 19:19:14 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 19:19:14 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 19:19:14 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 19:19:15 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 19:19:15 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 19:19:15 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 19:19:15 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 19:19:15 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 19:19:15 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 19:41:37 error: PATCH /api/v1/settings/updatedetails: Validation failed: cardTemplate: `minimal` is not a valid enum value for path `cardTemplate`.
+ValidationError: Validation failed: cardTemplate: `minimal` is not a valid enum value for path `cardTemplate`.
+    at _done (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/node_modules/mongoose/lib/helpers/updateValidators.js:228:19)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/node_modules/mongoose/lib/helpers/updateValidators.js:204:11
+    at schemaPath.doValidate.updateValidator (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/node_modules/mongoose/lib/helpers/updateValidators.js:162:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/node_modules/mongoose/lib/schematype.js:1360:11
+    at processTicksAndRejections (node:internal/process/task_queues:85:11)
+2025-04-11 22:58:35 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 22:58:35 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 22:58:38 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 22:58:38 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 22:58:38 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 22:58:38 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 22:58:38 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-04-11 22:58:38 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)

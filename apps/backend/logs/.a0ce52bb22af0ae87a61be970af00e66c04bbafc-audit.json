@@ -1,0 +1,45 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 30
+    },
+    "auditLog": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/.a0ce52bb22af0ae87a61be970af00e66c04bbafc-audit.json",
+    "files": [
+        {
+            "date": 1744020299216,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-07.log",
+            "hash": "bd1f7db752b4d907efe88ec211d512edeca48b1da0051b757bd97d1bb7e6f7c0"
+        },
+        {
+            "date": 1744094256568,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-08.log",
+            "hash": "9ffa84eb1648feb08539620125159f0ab45bc950ba2b0a767b1b1c223e40e09f"
+        },
+        {
+            "date": 1744173267119,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-09.log",
+            "hash": "7412da5101232001e49aebd4be2eafbbec9861a224714e30c1fbc4b3a500f9e0"
+        },
+        {
+            "date": 1744232466134,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-10.log",
+            "hash": "67da1eb97990c50653666afd1dad24a3cf93b7e58d1694f23301a3e4346a0eb5"
+        },
+        {
+            "date": 1744318892808,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-11.log",
+            "hash": "ddbea42cb755d0babd6382d05ae3732591b1c37a0ee53605be9da23820e69baf"
+        },
+        {
+            "date": 1744405679279,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-12.log",
+            "hash": "9d0fe534d876cadf6389282e06739cbb43d74ef3fdf615255a4cb22788b93567"
+        },
+        {
+            "date": 1744494978208,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-13.log",
+            "hash": "c6940cfdcce30d3e1cc88449557b07f53c1d3b63c3cbc1b06d4d8a272351e55c"
+        }
+    ],
+    "hashType": "sha256"
+}

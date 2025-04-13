@@ -1,0 +1,45 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/.46877a93acf0512df8ba9aee11042e09a5b33aa3-audit.json",
+    "files": [
+        {
+            "date": 1744020299200,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-07.log",
+            "hash": "ad42afe310617f535c99081c825a26d13a78e1b10e8c66ba73f3ececd8543f74"
+        },
+        {
+            "date": 1744094256564,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-08.log",
+            "hash": "ed67e01ce43caf6a898e787d1a385874733d5f0bdc0dcfbd1dcca1c75e66dd8f"
+        },
+        {
+            "date": 1744173267093,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-09.log",
+            "hash": "105c82384fb17545ec27dcac68e1d73ea85cae022bc96f825912888824bf4874"
+        },
+        {
+            "date": 1744232466109,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-10.log",
+            "hash": "3e692105fadfa752158cb3bd916eac4fe4a21db03c78d0c8eb67fad9432ace1b"
+        },
+        {
+            "date": 1744318892805,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-11.log",
+            "hash": "e01c766e71bd50b3cbe0e74554de42f5e5945ec4dc059f0e44e896cd83a909b0"
+        },
+        {
+            "date": 1744405679276,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-12.log",
+            "hash": "56b46f207d3143189b8fa748a45e8aece5c840fe9e35b3ef6029f1a2ee27e395"
+        },
+        {
+            "date": 1744494978116,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-13.log",
+            "hash": "00e2e2742297a466b4a5eeb61fee378d2996f0a34d698defa976be0ab263039f"
+        }
+    ],
+    "hashType": "sha256"
+}
