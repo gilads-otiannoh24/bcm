@@ -178,6 +178,21 @@ Business Card Manager/
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+## Building for Production
+
+To build the application for production, run the following command:
+\`\`\`bash # build frontend
+cd apps/frontend
+npm run build
+
+      # build backend
+      cd apps/backend
+      npm run build
+
+\`\`\`
+
+This will create a `dist` folders in the project apps directories each, which contains the built frontend and backend
+
 ## 📄 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
