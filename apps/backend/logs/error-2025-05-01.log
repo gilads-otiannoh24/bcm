@@ -1,0 +1,264 @@
+2025-05-01 00:47:21 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:47:21 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:49:44 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:49:44 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:50:43 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:50:43 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:52:17 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:52:17 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:52:21 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:52:21 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:52:21 error: GET /api/v1/settings/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:52:21 error: GET /api/v1/auth/me: Not authorized to access this route : errrTokenExpiredError: jwt expired
+Error: Not authorized to access this route : errrTokenExpiredError: jwt expired
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:47:9
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at trim_prefix (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:328:13)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:286:9
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at Function.handle (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:175:3)
+    at router (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:47:12)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+2025-05-01 00:52:38 error: POST /api/v1/favourites/add: Cards already in favourites
+Error: Cards already in favourites
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/favourites.ts:24:19
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:44:7
+2025-05-01 00:52:38 error: POST /api/v1/favourites/add: Cards already in favourites
+Error: Cards already in favourites
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/favourites.ts:24:19
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:44:7
+2025-05-01 00:53:31 error: POST /api/v1/favourites/add: Cards already in favourites
+Error: Cards already in favourites
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/favourites.ts:24:19
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:44:7
+2025-05-01 00:53:31 error: POST /api/v1/favourites/add: Cards already in favourites
+Error: Cards already in favourites
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/favourites.ts:24:19
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:44:7
+2025-05-01 00:53:54 error: POST /api/v1/favourites/add: Cards already in favourites
+Error: Cards already in favourites
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/favourites.ts:24:19
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:44:7
+2025-05-01 00:53:54 error: POST /api/v1/favourites/add: Cards already in favourites
+Error: Cards already in favourites
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/favourites.ts:24:19
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:44:7
+2025-05-01 00:55:37 error: POST /api/v1/favourites/add: Cards already in favourites
+Error: Cards already in favourites
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/favourites.ts:24:19
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:44:7
+2025-05-01 00:55:37 error: POST /api/v1/favourites/add: Cards already in favourites
+Error: Cards already in favourites
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/favourites.ts:24:19
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:44:7
+2025-05-01 00:57:27 error: POST /api/v1/favourites/add: Cards already in favourites
+Error: Cards already in favourites
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/favourites.ts:24:19
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:44:7
+2025-05-01 00:57:27 error: POST /api/v1/favourites/add: Cards already in favourites
+Error: Cards already in favourites
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/controllers/favourites.ts:24:19
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/async.ts:8:21
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:346:12)
+    at next (/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/node_modules/express/lib/router/index.js:280:10)
+    at /home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/src/middleware/auth.ts:44:7

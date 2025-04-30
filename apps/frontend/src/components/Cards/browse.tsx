@@ -139,19 +139,19 @@ export function BrowseCards() {
   };
 
   // Handle card duplication
-  const handleDuplicateCard = (card: BusinessCard) => {
-    const newCard: BusinessCard = {
-      ...card,
-      id: `card-${Date.now()}`,
-      title: `Copy of ${card.title}`,
-      status: "draft",
-      createdAt: new Date().toISOString().split("T")[0],
-      updatedAt: new Date().toISOString().split("T")[0],
-      views: 0,
-      shares: 0,
-    };
+  const handleDuplicateCard = async (card: BusinessCard) => {
+    try {
+      const res = await api.get(`/businesscards/${card.id}/duplicate`);
 
-    setCards([...cards, newCard]);
+      if (res.status === 201) {
+        setCards([...cards, res.data.data as BusinessCard]);
+        toast.success("Card duplicated successfully!");
+      }
+    } catch (error: any) {
+      if (error.status === 404) {
+        toast.error("Card to be duplicated not found!");
+      }
+    }
   };
 
   const handleFavouriteCard = async (card: BusinessCard) => {

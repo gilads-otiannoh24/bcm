@@ -27,9 +27,7 @@ When the backend is started on a new or empty database, it will automatically cr
 Each app requires environment variables to be configured before running. Boilerplate .env files are provided in both the frontend and backend directories. Use these as templates to set up your environment.
 
 ```bash
-cp .env.example .env
+cp env .env
 ```
 
 After copying, make sure to update any necessary values such as API URLs, database URIs, and secret keys.
-
-Let me know if you'd like to include instructions for production deployment, Docker, or database setup.

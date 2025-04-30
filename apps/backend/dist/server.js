@@ -24,8 +24,10 @@ const organizations_route_1 = __importDefault(require("./routes/organizations.ro
 const connections_route_1 = __importDefault(require("./routes/connections.route"));
 const cardCollections_route_1 = __importDefault(require("./routes/cardCollections.route"));
 const activities_route_1 = __importDefault(require("./routes/activities.route"));
+const favourites_route_1 = __importDefault(require("./routes/favourites.route"));
 const dotenv_1 = require("dotenv");
 const logger_1 = require("./utils/logger");
+const User_1 = require("./models/User");
 // Load env vars
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
@@ -84,11 +86,40 @@ app.use("/api/v1/collections", cardCollections_route_1.default);
 app.use("/api/v1/activities", activities_route_1.default);
 app.use("/api/v1/settings", settings_route_1.default);
 app.use("/api/v1/misc", misc_route_1.default);
+app.use("/api/v1/favourites", favourites_route_1.default);
 app.use(error_1.default);
 const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, async () => {
     await (0, db_1.default)();
     (0, logger_1.logInfo)(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+    // create a user and admin if they do not exist
+    const existsNormalUser = await User_1.User.findOne({ role: "user" });
+    if (!existsNormalUser) {
+        // create initial user
+        const userDetails = {
+            firstName: "Priscilla",
+            lastName: "Abunda",
+            email: "user@email.com",
+            password: "password123",
+            status: "active",
+        };
+        await User_1.User.create(userDetails);
+        (0, logger_1.logInfo)("Created first user!");
+    }
+    const existsAdmin = await User_1.User.findOne({ role: "admin" });
+    if (!existsAdmin) {
+        // create initial admin
+        const adminDetails = {
+            firstName: "Ray",
+            lastName: "Manimino",
+            email: "admin@email.com",
+            password: "password123",
+            role: "admin",
+            status: "active",
+        };
+        await User_1.User.create(adminDetails);
+        (0, logger_1.logInfo)("Created first admin");
+    }
 });
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err, promise) => {

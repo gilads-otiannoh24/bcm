@@ -7,12 +7,6 @@ import Toasts from "../components/Toasts";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 
-const pageVariants = {
-  initial: { opacity: 0, x: -50 },
-  animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: 50 },
-};
-
 const MainLayout = () => {
   const criticalError = useCriticalErrorStore((state) => state.isCriticalError);
   const error = useCriticalErrorStore((state) => state.error) as Error;
