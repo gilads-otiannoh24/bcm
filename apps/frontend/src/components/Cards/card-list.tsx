@@ -8,15 +8,18 @@ import {
   Trash2,
   MoreHorizontal,
   CheckCircle,
+  Heart,
 } from "lucide-react";
-import type { BusinessCard } from "./my-cards";
 import { Link } from "react-router-dom";
 import { CardPreview } from "./card-preview";
+import { BusinessCard } from "@shared/types";
+import { useAuth } from "../../context/AuthContext";
 
 type CardListProps = {
   cards: BusinessCard[];
   onDelete: (card: BusinessCard) => void;
   onDuplicate: (card: BusinessCard) => void;
+  onFavourite: (card: BusinessCard) => void;
   onShare: (cardId: string) => void;
   showCopySuccess: string | null;
 };
@@ -25,13 +28,18 @@ export function CardList({
   cards,
   onDelete,
   onDuplicate,
+  onFavourite,
   onShare,
   showCopySuccess,
 }: CardListProps) {
+  const { user } = useAuth();
   return (
     <div className="space-y-4">
       {cards.map((card) => (
-        <div key={card.id} className="card card-side bg-base-100 shadow-xl">
+        <div
+          key={card.id}
+          className="card card-side bg-base-100 shadow-xl transform duration-200 hover:scale-102"
+        >
           <figure className="w-32 md:w-48 h-full">
             <div className="w-full h-full">
               <CardPreview card={card} />
@@ -79,13 +87,19 @@ export function CardList({
                   <Eye className="h-4 w-4" />
                   <span className="hidden md:inline ml-1">View</span>
                 </Link>
-                <Link
-                  to={`/cards/${card.id}/edit`}
-                  className="btn btn-sm btn-outline"
-                >
-                  <Edit className="h-4 w-4" />
-                  <span className="hidden md:inline ml-1">Edit</span>
-                </Link>
+                {user &&
+                  (user.role === "admin" || user.id === card.owner?.id) && (
+                    <>
+                      <Link
+                        to={`/cards/${card.id}/edit`}
+                        className="btn btn-sm btn-outline"
+                      >
+                        <Edit className="h-4 w-4" />
+                        <span className="hidden md:inline ml-1">Edit</span>
+                      </Link>
+                    </>
+                  )}
+
                 <button
                   className="btn btn-sm btn-primary relative"
                   onClick={() => onShare(card.id)}
@@ -102,6 +116,7 @@ export function CardList({
                     </>
                   )}
                 </button>
+
                 <div className="dropdown dropdown-end">
                   <div
                     tabIndex={0}
@@ -114,21 +129,36 @@ export function CardList({
                     tabIndex={0}
                     className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                   >
-                    <li>
-                      <button onClick={() => onDuplicate(card)}>
-                        <Copy className="h-4 w-4" />
-                        Duplicate
-                      </button>
-                    </li>
-                    <li>
-                      <button
-                        onClick={() => onDelete(card)}
-                        className="text-error"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                        Delete
-                      </button>
-                    </li>
+                    {((user && user.id !== card.owner?.id) || !user) &&
+                      window.location.pathname !== "/favourites" && (
+                        <li>
+                          <button onClick={() => onFavourite(card)}>
+                            <Heart className="h-4 w-4" />
+                            Add to favourites
+                          </button>
+                        </li>
+                      )}
+
+                    {user &&
+                      (user.role === "admin" || user.id === card.owner?.id) && (
+                        <>
+                          <li>
+                            <button onClick={() => onDuplicate(card)}>
+                              <Copy className="h-4 w-4" />
+                              Duplicate
+                            </button>
+                          </li>
+                          <li>
+                            <button
+                              onClick={() => onDelete(card)}
+                              className="text-error"
+                            >
+                              <Trash2 className="h-4 w-4" />
+                              Delete
+                            </button>
+                          </li>
+                        </>
+                      )}
                   </ul>
                 </div>
               </div>

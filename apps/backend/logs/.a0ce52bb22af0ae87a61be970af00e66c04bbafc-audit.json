@@ -39,6 +39,26 @@
             "date": 1744494978208,
             "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-13.log",
             "hash": "c6940cfdcce30d3e1cc88449557b07f53c1d3b63c3cbc1b06d4d8a272351e55c"
+        },
+        {
+            "date": 1745868140823,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-28.log",
+            "hash": "ca046e31576fd921f0c278c06f76e126abb7f97e22beb15443d3ad623d8b18af"
+        },
+        {
+            "date": 1745910662460,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-29.log",
+            "hash": "f2eb114b77f1ef12fc97e4f66a3bc8679f9eccabcf4279a6a0f9910ab1d6e8d1"
+        },
+        {
+            "date": 1746022672843,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-30.log",
+            "hash": "34419011d83dd38ba813a4017279f071c1bb597ec95cfa2f97b148779d9a76a2"
+        },
+        {
+            "date": 1746047677423,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-05-01.log",
+            "hash": "50957f11081e39430ce1c38814c263b95e92c888a4e0a15994d545bcaf3dde9a"
         }
     ],
     "hashType": "sha256"

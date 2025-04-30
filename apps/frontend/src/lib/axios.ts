@@ -14,7 +14,18 @@ api.interceptors.response.use(
   (err: AxiosError) => {
     //const message = err.message || "An unknown error occurred";
 
-    const allowedRoutes = ["/login", "/register", "/forgot-password", "/"];
+    const allowedRoutes = [
+      "/login",
+      "/register",
+      "/forgot-password",
+      "/",
+      "/browse",
+      "/favourites",
+      "/contact",
+      "/terms",
+      "/about",
+      "/privacy",
+    ];
 
     if (err.response) {
       if (

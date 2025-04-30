@@ -22,7 +22,7 @@ export type CardTemplate =
   | "bold"
   | "elegant";
 
-export function MyCards() {
+export function BrowseCards() {
   const [cards, setCards] = useState<BusinessCard[]>([]);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchTerm, setSearchTerm] = useState("");
@@ -31,7 +31,7 @@ export function MyCards() {
   const [cardToDelete, setCardToDelete] = useState<BusinessCard | null>(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [showCopySuccess, setShowCopySuccess] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const naviagate = useNavigate();
   const setCrtitcaError = useCriticalErrorStore(
@@ -39,14 +39,22 @@ export function MyCards() {
   );
   const setError = useCriticalErrorStore((state) => state.setError);
 
-  const { getUserSettings, setCardDisplayMode } = useAuth();
+  const { getUserSettings, setCardDisplayMode, user, checkAuth } = useAuth();
   const { toast } = useToastStore();
+
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      await checkAuth();
+    };
+
+    checkAuthStatus();
+  }, []);
 
   useEffect(() => {
     const getCards = async () => {
       try {
         setLoading(true);
-        const response = await api.get("/businesscards/me");
+        const response = await api.get("/businesscards");
 
         if (response.data.success) {
           setCards(response.data.data);
@@ -87,36 +95,6 @@ export function MyCards() {
     getPrefferedViewMode();
   }, []);
 
-  useEffect(() => {
-    // check for favourites in localStorage and add to users favourites automatically and reset
-    const addFavouritesAutomatically = async () => {
-      const favsJson = localStorage.getItem("favourites");
-
-      if (!favsJson) return;
-
-      const favs = JSON.parse(favsJson) as BusinessCard[];
-
-      if (!favs) return;
-
-      try {
-        const res = await api.post("/favourites/add", {
-          ids: favs.map((f) => f.id),
-        });
-
-        if (res.status === 201) {
-          localStorage.removeItem("favourites");
-          toast.success("Favourites updated successfully!");
-        }
-      } catch (error: any) {
-        if (error.status === 400) {
-          toast.error("Error updating your favourites!");
-        }
-      }
-    };
-
-    addFavouritesAutomatically();
-  }, []);
-
   // Filter cards based on search term and filters
   const filteredCards = cards.filter((card) => {
     const matchesSearch =
@@ -139,11 +117,24 @@ export function MyCards() {
   };
 
   // Confirm card deletion
-  const confirmDeleteCard = () => {
+  const confirmDeleteCard = async () => {
     if (cardToDelete) {
-      setCards(cards.filter((card) => card.id !== cardToDelete.id));
-      setIsDeleteModalOpen(false);
-      setCardToDelete(null);
+      try {
+        const res = await api.delete(`businesscards/${cardToDelete.id}`);
+
+        if (res.data.success) {
+          toast.success("Card deleted successfully!");
+          setCards(cards.filter((card) => card.id !== cardToDelete.id));
+        }
+      } catch (error: any) {
+        if (error.status === 404) {
+          toast.error("Card not found!");
+        }
+        console.error(error);
+      } finally {
+        setIsDeleteModalOpen(false);
+        setCardToDelete(null);
+      }
     }
   };
 
@@ -164,6 +155,30 @@ export function MyCards() {
   };
 
   const handleFavouriteCard = async (card: BusinessCard) => {
+    if (!user) {
+      let favs = localStorage.getItem("favourites");
+
+      if (favs) {
+        const favsR = JSON.parse(favs) as BusinessCard[];
+
+        let exists = favsR.filter((c) => c.id === card.id);
+
+        if (exists.length > 0) {
+          toast.warning("Card already in favourites!");
+          return;
+        }
+
+        favsR.push(card);
+
+        localStorage.setItem("favourites", JSON.stringify(favsR));
+        toast.success("Card added to favourites!");
+        return;
+      }
+
+      localStorage.setItem("favourites", JSON.stringify([card]));
+      return;
+    }
+
     try {
       const res = await api.post("/favourites/add", { id: card.id });
 
@@ -277,30 +292,28 @@ export function MyCards() {
       </div>
 
       {/* Cards Display */}
-      {filteredCards.length === 0 ? (
-        loading ? (
-          <div className="flex justify-center items-center py-8 h-fit">
-            <Loading />
-          </div>
-        ) : (
-          <div className="bg-base-100 p-8 rounded-lg shadow-md text-center">
-            <div className="flex justify-center mb-4">
-              <div className="bg-base-200 p-4 rounded-full">
-                <CreditCard className="h-8 w-8 text-base-content/50" />
-              </div>
+      {loading ? (
+        <div className="flex justify-center items-center py-8 h-fit">
+          <Loading />
+        </div>
+      ) : filteredCards.length === 0 ? (
+        <div className="bg-base-100 p-8 rounded-lg shadow-md text-center">
+          <div className="flex justify-center mb-4">
+            <div className="bg-base-200 p-4 rounded-full">
+              <CreditCard className="h-8 w-8 text-base-content/50" />
             </div>
-            <h3 className="text-xl font-bold mb-2">No cards found</h3>
-            <p className="text-base-content/70 mb-6">
-              {cards.length === 0
-                ? "You have no business cards yet."
-                : "No cards match your current filters."}
-            </p>
-            <button className="btn btn-outline" onClick={resetFilters}>
-              <Filter className="h-4 w-4 mr-2" />
-              Reset Filters
-            </button>
           </div>
-        )
+          <h3 className="text-xl font-bold mb-2">No cards found</h3>
+          <p className="text-base-content/70 mb-6">
+            {cards.length === 0
+              ? "There are no business cards to browse yet."
+              : "No cards match your current filters."}
+          </p>
+          <button className="btn btn-outline" onClick={resetFilters}>
+            <Filter className="h-4 w-4 mr-2" />
+            Reset Filters
+          </button>
+        </div>
       ) : viewMode === "grid" ? (
         <CardGrid
           cards={filteredCards}

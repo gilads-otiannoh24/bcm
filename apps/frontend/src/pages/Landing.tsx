@@ -1,22 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { CreditCard, Users, Heart } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { CreditCard, Users, Heart } from "lucide-react";
+import HeroSection from "../components/Hero/hero";
 
 const Landing: React.FC = () => {
   return (
     <div className="space-y-16">
       {/* Hero Section */}
-      <section className="hero min-h-[70vh] bg-base-200 rounded-box">
-        <div className="hero-content text-center">
-          <div className="max-w-md">
-            <h1 className="text-5xl font-bold">Business Card Manager</h1>
-            <p className="py-6">
-              Digitize your business cards, manage connections, and grow your network efficiently.
-            </p>
-            <Link to="/register" className="btn btn-primary">Get Started</Link>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* Features Section */}
       <section className="grid md:grid-cols-3 gap-8">
@@ -48,11 +39,20 @@ const Landing: React.FC = () => {
       {/* CTA Section */}
       <section className="card bg-primary text-primary-content">
         <div className="card-body text-center">
-          <h2 className="card-title justify-center text-3xl">Ready to Get Started?</h2>
-          <p>Join thousands of professionals managing their business connections digitally.</p>
+          <h2 className="card-title justify-center text-3xl">
+            Ready to Get Started?
+          </h2>
+          <p>
+            Join thousands of professionals managing their business connections
+            digitally.
+          </p>
           <div className="card-actions justify-center">
-            <Link to="/register" className="btn btn-secondary">Sign Up Now</Link>
-            <Link to="/login" className="btn btn-ghost">Login</Link>
+            <Link to="/register" className="btn btn-secondary">
+              Sign Up Now
+            </Link>
+            <Link to="/login" className="btn btn-ghost">
+              Login
+            </Link>
           </div>
         </div>
       </section>

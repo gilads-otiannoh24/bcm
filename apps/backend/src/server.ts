@@ -20,8 +20,10 @@ import organizations from "./routes/organizations.route";
 import connections from "./routes/connections.route";
 import cardCollections from "./routes/cardCollections.route";
 import activities from "./routes/activities.route";
+import favourites from "./routes/favourites.route";
 import { config } from "dotenv";
 import { logError, logInfo } from "./utils/logger";
+import { User } from "./models/User";
 
 // Load env vars
 config();
@@ -95,6 +97,7 @@ app.use("/api/v1/collections", cardCollections);
 app.use("/api/v1/activities", activities);
 app.use("/api/v1/settings", settings);
 app.use("/api/v1/misc", misc);
+app.use("/api/v1/favourites", favourites);
 
 app.use(errorHandler);
 
@@ -103,6 +106,40 @@ const PORT = process.env.PORT || 5000;
 const server = app.listen(PORT, async () => {
   await connectDB();
   logInfo(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
+
+  // create a user and admin if they do not exist
+  const existsNormalUser = await User.findOne({ role: "user" });
+
+  if (!existsNormalUser) {
+    // create initial user
+    const userDetails = {
+      firstName: "Priscilla",
+      lastName: "Abunda",
+      email: "user@email.com",
+      password: "password123",
+      status: "active",
+    };
+
+    await User.create(userDetails);
+    logInfo("Created first user!");
+  }
+
+  const existsAdmin = await User.findOne({ role: "admin" });
+
+  if (!existsAdmin) {
+    // create initial admin
+    const adminDetails = {
+      firstName: "Ray",
+      lastName: "Manimino",
+      email: "admin@email.com",
+      password: "password123",
+      role: "admin",
+      status: "active",
+    };
+
+    await User.create(adminDetails);
+    logInfo("Created first admin");
+  }
 });
 
 // Handle unhandled promise rejections

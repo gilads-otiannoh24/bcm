@@ -2,7 +2,7 @@
 
 import type React from "react";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { Eye, EyeOff } from "lucide-react";
 import { useAuth } from "../../../context/AuthContext";
@@ -34,21 +34,86 @@ export function LoginForm() {
     password?: string[];
   }>({});
 
+  const [canLogin, setCanLogin] = useState(false);
+
   const { login } = useAuth();
+
+  const validationTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear validation errors when user types
+    // Clear previous timeout
+    if (validationTimeout.current) {
+      clearTimeout(validationTimeout.current);
+    }
+
     if (validationErrors[name as keyof typeof validationErrors]) {
       setValidationErrors((prev) => ({ ...prev, [name]: undefined }));
     }
 
-    // Clear login error when user types
+    // Set new validation timeout
+    validationTimeout.current = setTimeout(() => {
+      validateForm(name as "email" | "password", value);
+
+      try {
+        loginSchema.parse({ ...formData, [name]: value }); // ensure current field is included
+        setCanLogin(true);
+      } catch (error) {
+        setCanLogin(false);
+      }
+    }, 300);
+
     if (loginError) {
       setLoginError(null);
+    }
+  };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (validationTimeout.current) {
+        clearTimeout(validationTimeout.current);
+      }
+    };
+  }, []);
+
+  const validateForm = (
+    name: null | "email" | "password" = null,
+    value: string = ""
+  ): boolean => {
+    try {
+      let data = formData;
+
+      if (name) {
+        data = { ...data, [name]: value };
+      }
+
+      loginSchema.parse(data);
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        // Format and set validation errors
+        const errors = error.format() as any;
+
+        if (name) {
+          setValidationErrors((prev) => ({
+            ...prev,
+            [name]: errors[name]?._errors,
+          }));
+          return false;
+        }
+
+        setValidationErrors({
+          email: errors.email?._errors,
+          password: errors.password?._errors,
+        });
+        return false;
+      }
+
+      return false;
     }
   };
 
@@ -60,20 +125,7 @@ export function LoginForm() {
     setValidationErrors({});
     setLoginError(null);
 
-    // Validate form data
-    try {
-      loginSchema.parse(formData);
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        // Format and set validation errors
-        const errors = error.format() as any;
-        setValidationErrors({
-          email: errors.email?._errors,
-          password: errors.password?._errors,
-        });
-        return;
-      }
-    }
+    if (!validateForm) return;
 
     // If validation passes, attempt login
     try {
@@ -188,7 +240,7 @@ export function LoginForm() {
             <button
               type="submit"
               className={`btn btn-primary w-full`}
-              disabled={isLoading}
+              disabled={isLoading || !canLogin}
             >
               {isLoading ? (
                 <>

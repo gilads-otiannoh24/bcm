@@ -12,7 +12,7 @@ export default function Toasts() {
       case "error":
         return "alert-error";
       case "warning":
-        return "alert-error";
+        return "alert-warning";
       case "info":
         return "alert-info";
       case "destructive":

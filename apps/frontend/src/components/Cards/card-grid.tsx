@@ -8,15 +8,18 @@ import {
   Trash2,
   MoreHorizontal,
   CheckCircle,
+  Heart,
 } from "lucide-react";
-import type { BusinessCard } from "./my-cards";
 import { Link } from "react-router-dom";
 import { CardPreview } from "./card-preview";
+import { useAuth } from "../../context/AuthContext";
+import { BusinessCard } from "@shared/types";
 
 type CardGridProps = {
   cards: BusinessCard[];
   onDelete: (card: BusinessCard) => void;
   onDuplicate: (card: BusinessCard) => void;
+  onFavourite: (card: BusinessCard) => void;
   onShare: (cardId: string) => void;
   showCopySuccess: string | null;
 };
@@ -25,13 +28,19 @@ export function CardGrid({
   cards,
   onDelete,
   onDuplicate,
+  onFavourite,
   onShare,
   showCopySuccess,
 }: CardGridProps) {
+  const { user } = useAuth();
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {cards.map((card) => (
-        <div key={card.id} className="card bg-base-100 shadow-xl">
+        <div
+          key={card.id}
+          className="card bg-base-100 shadow-xl transform duration-200 hover:scale-102"
+        >
           <figure className="relative h-48">
             <div className="w-full h-full">
               <CardPreview card={card} />
@@ -50,38 +59,53 @@ export function CardGrid({
                   className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <Link to={`/cards/${card.id}`}>
-                      <Eye className="h-4 w-4" />
-                      View
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={`/cards/${card.id}/edit`}>
-                      <Edit className="h-4 w-4" />
-                      Edit
-                    </Link>
-                  </li>
-                  <li>
                     <button onClick={() => onShare(card.id)}>
                       <Share2 className="h-4 w-4" />
                       Share
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => onDuplicate(card)}>
-                      <Copy className="h-4 w-4" />
-                      Duplicate
-                    </button>
+                    <Link to={`/cards/${card.id}`}>
+                      <Eye className="h-4 w-4" />
+                      View
+                    </Link>
                   </li>
-                  <li>
-                    <button
-                      onClick={() => onDelete(card)}
-                      className="text-error"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                      Delete
-                    </button>
-                  </li>
+                  {((user && user.id !== card.owner?.id) || !user) &&
+                    window.location.pathname !== "/favourites" && (
+                      <li>
+                        <button onClick={() => onFavourite(card)}>
+                          <Heart className="h-4 w-4" />
+                          Add to favourites
+                        </button>
+                      </li>
+                    )}
+
+                  {user &&
+                    (user.role === "admin" || user.id === card.owner?.id) && (
+                      <>
+                        <li>
+                          <Link to={`/cards/${card.id}/edit`}>
+                            <Edit className="h-4 w-4" />
+                            Edit
+                          </Link>
+                        </li>
+                        <li>
+                          <button onClick={() => onDuplicate(card)}>
+                            <Copy className="h-4 w-4" />
+                            Duplicate
+                          </button>
+                        </li>
+                        <li>
+                          <button
+                            onClick={() => onDelete(card)}
+                            className="text-error"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                            Delete
+                          </button>
+                        </li>
+                      </>
+                    )}
                 </ul>
               </div>
             </div>
@@ -124,13 +148,18 @@ export function CardGrid({
             </div>
 
             <div className="card-actions justify-between mt-4">
-              <a
-                href={`/cards/${card.id}/edit`}
-                className="btn btn-sm btn-outline flex-1"
-              >
-                <Edit className="h-4 w-4 mr-1" />
-                Edit
-              </a>
+              {user &&
+                (user.role === "admin" || user.id === card.owner?.id) && (
+                  <>
+                    <a
+                      href={`/cards/${card.id}/edit`}
+                      className="btn btn-sm btn-outline flex-1"
+                    >
+                      <Edit className="h-4 w-4 mr-1" />
+                      Edit
+                    </a>
+                  </>
+                )}
               <button
                 className="btn btn-sm btn-primary flex-1 relative"
                 onClick={() => onShare(card.id)}

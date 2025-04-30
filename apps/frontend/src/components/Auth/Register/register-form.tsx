@@ -1,6 +1,6 @@
 import type React from "react";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { z } from "zod";
 import { Eye, EyeOff, Loader2 } from "lucide-react";
 import { useAuth } from "../../../context/AuthContext";
@@ -24,7 +24,7 @@ const registerSchema = z
       .regex(/[a-z]/, {
         message: "Password must contain at least one lowercase letter",
       })
-      .regex(/[0-9]/, { message: "Password must contain at least one number" }),
+      .regex(/\d{4}/, { message: "Password must contain at least 4 numbers" }),
     confirmPassword: z.string(),
   })
   .refine((data) => data.password === data.confirmPassword, {
@@ -59,21 +59,89 @@ export function RegisterForm() {
   }>({});
   const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
+  const [canRegister, setCanRegister] = useState(false);
+
   const { register } = useAuth();
+
+  const validationTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
 
-    // Clear validation errors when user types
+    // Clear previous timeout
+    if (validationTimeout.current) {
+      clearTimeout(validationTimeout.current);
+    }
+
     if (validationErrors[name as keyof typeof validationErrors]) {
       setValidationErrors((prev) => ({ ...prev, [name]: undefined }));
     }
 
-    // Clear register error when user types
+    // Set new validation timeout
+    validationTimeout.current = setTimeout(() => {
+      validateForm(name as "email" | "password", value);
+
+      try {
+        registerSchema.parse({ ...formData, [name]: value }); // ensure current field is included
+        setCanRegister(true);
+      } catch (error) {
+        setCanRegister(false);
+      }
+    }, 300);
+
     if (registerError) {
       setRegisterError(null);
+    }
+  };
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (validationTimeout.current) {
+        clearTimeout(validationTimeout.current);
+      }
+    };
+  }, []);
+
+  const validateForm = (
+    name: null | "email" | "password" = null,
+    value: string = ""
+  ): boolean => {
+    try {
+      let data = formData;
+
+      if (name) {
+        data = { ...data, [name]: value };
+      }
+
+      registerSchema.parse(data);
+      return true;
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        // Format and set validation errors
+        const errors = error.format() as any;
+
+        if (name) {
+          setValidationErrors((prev) => ({
+            ...prev,
+            [name]: errors[name],
+          }));
+          return false;
+        }
+
+        setValidationErrors({
+          firstName: errors.firstName,
+          lastName: errors.lastName,
+          email: errors.email,
+          password: errors.password,
+          confirmPassword: errors.confirmPassword,
+        });
+        return false;
+      }
+
+      return false;
     }
   };
 
@@ -169,7 +237,7 @@ export function RegisterForm() {
                 />
                 {validationErrors.firstName && (
                   <label className="label">
-                    <span className="label-text-alt text-error">
+                    <span className="label-text-alt text-error text-wrap">
                       {validationErrors.firstName?._errors[0]}
                     </span>
                   </label>
@@ -195,7 +263,7 @@ export function RegisterForm() {
                 />
                 {validationErrors.lastName && (
                   <label className="label">
-                    <span className="label-text-alt text-error">
+                    <span className="label-text-alt text-error text-wrap">
                       {validationErrors.lastName?._errors[0]}
                     </span>
                   </label>
@@ -222,7 +290,7 @@ export function RegisterForm() {
               />
               {validationErrors.email && (
                 <label className="label">
-                  <span className="label-text-alt text-error">
+                  <span className="label-text-alt text-error text-wrap">
                     {validationErrors.email?._errors[0]}
                   </span>
                 </label>
@@ -265,7 +333,7 @@ export function RegisterForm() {
               </div>
               {validationErrors.password && (
                 <label className="label">
-                  <span className="label-text-alt text-error">
+                  <span className="label-text-alt text-error text-wrap">
                     {validationErrors.password?._errors.map((error, index) => (
                       <div key={index}>{error}</div>
                     ))}
@@ -310,7 +378,7 @@ export function RegisterForm() {
               </div>
               {validationErrors.confirmPassword && (
                 <label className="label">
-                  <span className="label-text-alt text-error">
+                  <span className="label-text-alt text-error text-wrap">
                     {validationErrors.confirmPassword?._errors[0]}
                   </span>
                 </label>
@@ -323,7 +391,7 @@ export function RegisterForm() {
                 className={`btn btn-primary w-full ${
                   isLoading ? "loading" : ""
                 }`}
-                disabled={isLoading}
+                disabled={isLoading || !canRegister}
               >
                 {isLoading ? (
                   <>

@@ -21,6 +21,16 @@ const router = express.Router();
 // Public routes
 router.get("/share/:shareableLink", getCardByShareableLink);
 
+router.get(
+  "/",
+  advancedResults(BusinessCard, [
+    {
+      path: "owner",
+      select: "firstName lastName email avatar",
+    },
+  ]),
+  getCards
+);
 // Protected routes
 router.use(protect);
 
@@ -35,17 +45,6 @@ router.get("/:id/stats", getCardStats);
 router.route("/:id").get(getCard).patch(updateCard).delete(deleteCard);
 
 // Admin routes
-router.get(
-  "/",
-  authorize("admin"),
-  advancedResults(BusinessCard, [
-    {
-      path: "owner",
-      select: "firstName lastName email avatar",
-    },
-  ]),
-  getCards
-);
 router.post("/deletebulk", authorize("admin"), deleteBulkCards);
 
 export default router;

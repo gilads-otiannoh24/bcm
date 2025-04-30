@@ -18,10 +18,10 @@ import {
 } from "lucide-react";
 import { CardPreview } from "./card-preview";
 import { ConfirmModal } from "./confirm-modal";
-import type { BusinessCard, CardTemplate } from "./my-cards";
 import api from "../../lib/axios";
 import { useNavigate } from "react-router-dom";
 import useToastStore from "../../hooks/useToast";
+import { BusinessCard, CardTemplate } from "@shared/types";
 
 // Template options
 const templateOptions: {

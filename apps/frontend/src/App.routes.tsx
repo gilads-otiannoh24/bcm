@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import * as React from "react";
 import AdminLayout from "./components/Admin/layout";
@@ -10,6 +10,9 @@ import ContactPage from "./pages/Contact";
 import TermsOfServicePage from "./pages/Terms";
 import PrivacyPolicyPage from "./pages/Privacy";
 import ErrorBoundary from "./components/ErrorBoundary";
+import BrowsePage from "./pages/cards/Browse";
+import FavouritesPage from "./pages/cards/Favourites";
+import { AnimatePresence } from "framer-motion";
 
 // Lazy load pages
 const Landing = React.lazy(() => import("./pages/Landing"));
@@ -44,7 +47,7 @@ const Unauthorized = React.lazy(() => import("./pages/errors/_401"));
 
 const AppRoutes = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <React.Suspense
         fallback={
           <div className="flex items-center justify-center min-h-screen">
@@ -52,142 +55,147 @@ const AppRoutes = () => {
           </div>
         }
       >
-        <Routes>
-          <Route element={<MainLayout />} errorElement={<ErrorBoundary />}>
-            <Route
-              path="/"
-              element={<Layout />}
-              errorElement={<ErrorBoundary />}
-            >
-              <Route index element={<Landing />} />
-
-              {/* auth routes */}
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route element={<MainLayout />} errorElement={<ErrorBoundary />}>
               <Route
-                path="login"
-                element={
-                  <AuthGuard>
-                    <Login />
-                  </AuthGuard>
-                }
+                path="/"
+                element={<Layout />}
                 errorElement={<ErrorBoundary />}
-              />
-              <Route
-                path="register"
-                element={
-                  <AuthGuard>
-                    <Register />
-                  </AuthGuard>
-                }
-              />
-              <Route
-                path="forgot-password"
-                element={
-                  <AuthGuard>
-                    <ForgotPassword />
-                  </AuthGuard>
-                }
-              />
-              <Route path="reset-password">
+              >
+                <Route index element={<Landing />} />
+
+                <Route path="browse" element={<BrowsePage />} />
+                <Route path="favourites" element={<FavouritesPage />} />
+
+                {/* auth routes */}
                 <Route
-                  path=":token"
+                  path="login"
                   element={
                     <AuthGuard>
-                      <ResetPassword />
+                      <Login />
+                    </AuthGuard>
+                  }
+                  errorElement={<ErrorBoundary />}
+                />
+                <Route
+                  path="register"
+                  element={
+                    <AuthGuard>
+                      <Register />
                     </AuthGuard>
                   }
                 />
-              </Route>
-
-              {/* cards routes */}
-              <Route path="cards">
                 <Route
-                  index
+                  path="forgot-password"
                   element={
-                    <ProtectedRoute>
-                      <CardsPage />
-                    </ProtectedRoute>
+                    <AuthGuard>
+                      <ForgotPassword />
+                    </AuthGuard>
                   }
-                ></Route>
-                <Route path=":id">
+                />
+                <Route path="reset-password">
+                  <Route
+                    path=":token"
+                    element={
+                      <AuthGuard>
+                        <ResetPassword />
+                      </AuthGuard>
+                    }
+                  />
+                </Route>
+
+                {/* cards routes */}
+                <Route path="cards">
                   <Route
                     index
                     element={
                       <ProtectedRoute>
-                        <CardDetailPage />
+                        <CardsPage />
                       </ProtectedRoute>
                     }
                   ></Route>
+                  <Route path=":id">
+                    <Route
+                      index
+                      element={
+                        <ProtectedRoute>
+                          <CardDetailPage />
+                        </ProtectedRoute>
+                      }
+                    ></Route>
+                    <Route
+                      path="edit"
+                      element={
+                        <ProtectedRoute>
+                          <EditCardPage />
+                        </ProtectedRoute>
+                      }
+                    ></Route>
+                  </Route>
+
                   <Route
-                    path="edit"
+                    path="create"
                     element={
                       <ProtectedRoute>
-                        <EditCardPage />
+                        <CreateCardPage />
                       </ProtectedRoute>
                     }
                   ></Route>
                 </Route>
-
                 <Route
-                  path="create"
+                  path="settings"
                   element={
                     <ProtectedRoute>
-                      <CreateCardPage />
+                      <Settings />
                     </ProtectedRoute>
                   }
-                ></Route>
+                />
+                <Route
+                  path="favorites"
+                  element={
+                    <ProtectedRoute>
+                      <Favorites />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="profile"
+                  element={
+                    <ProtectedRoute>
+                      <Profile />
+                    </ProtectedRoute>
+                  }
+                />
+
+                <Route path="about" element={<About />} />
+                <Route path="contact" element={<ContactPage />} />
+                <Route path="terms" element={<TermsOfServicePage />} />
+                <Route path="privacy" element={<PrivacyPolicyPage />} />
               </Route>
-              <Route
-                path="settings"
-                element={
-                  <ProtectedRoute>
-                    <Settings />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="favorites"
-                element={
-                  <ProtectedRoute>
-                    <Favorites />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="profile"
-                element={
-                  <ProtectedRoute>
-                    <Profile />
-                  </ProtectedRoute>
-                }
-              />
 
-              <Route path="about" element={<About />} />
-              <Route path="contact" element={<ContactPage />} />
-              <Route path="terms" element={<TermsOfServicePage />} />
-              <Route path="privacy" element={<PrivacyPolicyPage />} />
+              <Route
+                path="admin"
+                element={
+                  <ProtectedRoute roles={["admin"]}>
+                    <AdminLayout />
+                  </ProtectedRoute>
+                }
+              >
+                <Route index element={<AdminDashboard />} />
+                <Route path="users" element={<UsersPage />} />
+                <Route path="cards" element={<AdminCardsPage />} />
+              </Route>
+
+              {/* error pages */}
+              <Route path="/forbidden" element={<Forbidden />} />
+              <Route path="/unauthorized" element={<Unauthorized />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
-
-            <Route
-              path="admin"
-              element={
-                <ProtectedRoute roles={["admin"]}>
-                  <AdminLayout />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<AdminDashboard />} />
-              <Route path="users" element={<UsersPage />} />
-              <Route path="cards" element={<AdminCardsPage />} />
-            </Route>
-
-            {/* error pages */}
-            <Route path="/forbidden" element={<Forbidden />} />
-            <Route path="/unauthorized" element={<Unauthorized />} />
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
+          </Routes>
+        </AnimatePresence>
       </React.Suspense>
-    </Router>
+    </BrowserRouter>
   );
 };
 

@@ -11,10 +11,10 @@ import {
 } from "lucide-react";
 import { CardPreview } from "./card-preview";
 import { ConfirmModal } from "./confirm-modal";
-import type { BusinessCard } from "./my-cards";
 import api from "../../lib/axios";
 import useToastStore from "../../hooks/useToast";
 import { useNavigate } from "react-router-dom";
+import { BusinessCard } from "@shared/types";
 
 type CardDetailProps = {
   cardId: string;
@@ -83,7 +83,7 @@ export function CardDetail({ cardId }: CardDetailProps) {
   // Handle share
   const handleShare = () => {
     // In a real app, this would generate a sharing link or open a share dialog
-    const shareUrl = `https://cardconnect.example.com/share/${cardId}`;
+    const shareUrl = `https://bsm.com/share/${cardId}`;
 
     // Copy to clipboard
     navigator.clipboard.writeText(shareUrl).then(() => {

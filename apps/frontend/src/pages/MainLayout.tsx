@@ -5,6 +5,13 @@ import useCriticalErrorStore from "../stores/criticalErrorStore";
 import GlobalError from "./errors/Global";
 import Toasts from "../components/Toasts";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
+
+const pageVariants = {
+  initial: { opacity: 0, x: -50 },
+  animate: { opacity: 1, x: 0 },
+  exit: { opacity: 0, x: 50 },
+};
 
 const MainLayout = () => {
   const criticalError = useCriticalErrorStore((state) => state.isCriticalError);
@@ -23,13 +30,18 @@ const MainLayout = () => {
   }
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 50 }}
+      transition={{ duration: 0.5 }}
+    >
       <Toasts />
       <Offline />
       <main className="min-h-screen">
         <Outlet />
       </main>
-    </>
+    </motion.div>
   );
 };
 

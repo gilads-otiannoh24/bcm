@@ -6,6 +6,8 @@ import {
   FileText,
   Shield,
   Mail,
+  Globe,
+  HeartIcon,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -24,6 +26,16 @@ const Sidebar = () => {
         className="drawer-overlay"
       ></div>
       <ul className="menu menu-lg mt-16 p-4 w-80 min-h-full bg-base-200 text-base-content">
+        <li>
+          <Link to="/browse">
+            <Globe className="h-4 w-4" /> Browse Cards
+          </Link>
+        </li>
+        <li>
+          <Link to="/favourites">
+            <HeartIcon className="h-4 w-4" /> Favourites
+          </Link>
+        </li>
         {user && (
           <li>
             <Link to="/cards">

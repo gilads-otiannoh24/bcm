@@ -6,39 +6,24 @@
     "auditLog": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/.46877a93acf0512df8ba9aee11042e09a5b33aa3-audit.json",
     "files": [
         {
-            "date": 1744020299200,
-            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-07.log",
-            "hash": "ad42afe310617f535c99081c825a26d13a78e1b10e8c66ba73f3ececd8543f74"
+            "date": 1745868140797,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-28.log",
+            "hash": "57063f2ff335ec8261d8b8c647469cce06ba742b1466090ff935f4209d12b655"
         },
         {
-            "date": 1744094256564,
-            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-08.log",
-            "hash": "ed67e01ce43caf6a898e787d1a385874733d5f0bdc0dcfbd1dcca1c75e66dd8f"
+            "date": 1745910662447,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-29.log",
+            "hash": "a655e3f03f5ebbbaafa5ae65096a71d51371d27c1df3a5b289f7da3034f6f186"
         },
         {
-            "date": 1744173267093,
-            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-09.log",
-            "hash": "105c82384fb17545ec27dcac68e1d73ea85cae022bc96f825912888824bf4874"
+            "date": 1746022672833,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-30.log",
+            "hash": "c0aa6ca7e31817c632bfc310b57276f6604d2c1dbcbf989bd862275f5994f679"
         },
         {
-            "date": 1744232466109,
-            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-10.log",
-            "hash": "3e692105fadfa752158cb3bd916eac4fe4a21db03c78d0c8eb67fad9432ace1b"
-        },
-        {
-            "date": 1744318892805,
-            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-11.log",
-            "hash": "e01c766e71bd50b3cbe0e74554de42f5e5945ec4dc059f0e44e896cd83a909b0"
-        },
-        {
-            "date": 1744405679276,
-            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-12.log",
-            "hash": "56b46f207d3143189b8fa748a45e8aece5c840fe9e35b3ef6029f1a2ee27e395"
-        },
-        {
-            "date": 1744494978116,
-            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-04-13.log",
-            "hash": "00e2e2742297a466b4a5eeb61fee378d2996f0a34d698defa976be0ab263039f"
+            "date": 1746047677419,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-05-01.log",
+            "hash": "92b9f23767a5a6831c1480c162b2b19deb672ba95a1c1b529053d8530c2e11d7"
         }
     ],
     "hashType": "sha256"

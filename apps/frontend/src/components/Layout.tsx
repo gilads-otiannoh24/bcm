@@ -56,8 +56,10 @@ export const Layout: React.FC = () => {
                     role="button"
                     className="btn btn-ghost btn-circle avatar placeholder"
                   >
-                    <div className="bg-neutral text-neutral-content rounded-full w-10">
-                      <span className="text-xl">{user.fullName}</span>
+                    <div className="bg-primary text-neutral-content rounded-full w-10">
+                      <span className="text-xl h-full flex font-bold items-center justify-center">
+                        {user?.fullName?.[0]?.toUpperCase() || "B"}
+                      </span>
                     </div>
                   </div>
                   <ul
