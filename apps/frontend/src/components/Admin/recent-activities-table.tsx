@@ -145,6 +145,14 @@ export function RecentActivitiesTable() {
               </td>
             </tr>
           ))}
+
+          {activities.length === 0 && (
+            <tr>
+              <td className="text-center font-bold text-base" colSpan={5}>
+                No activities yet!
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

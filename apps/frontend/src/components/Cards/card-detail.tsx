@@ -15,6 +15,7 @@ import api from "../../lib/axios";
 import useToastStore from "../../hooks/useToast";
 import { useNavigate } from "react-router-dom";
 import { BusinessCard } from "@shared/types";
+import { useAuth } from "../../context/AuthContext";
 
 type CardDetailProps = {
   cardId: string;
@@ -30,6 +31,7 @@ export function CardDetail({ cardId }: CardDetailProps) {
 
   const { toast } = useToastStore();
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   // Fetch card data
   useEffect(() => {
@@ -113,9 +115,12 @@ export function CardDetail({ cardId }: CardDetailProps) {
           The business card you're looking for doesn't exist or has been
           deleted.
         </p>
-        <button className="btn btn-primary" onClick={() => navigate("/cards")}>
+        <button
+          className="btn btn-primary"
+          onClick={() => (user ? navigate("/cards") : navigate("/browse"))}
+        >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to My Cards
+          Back to {user ? "My" : ""} Cards
         </button>
       </div>
     );
@@ -128,7 +133,7 @@ export function CardDetail({ cardId }: CardDetailProps) {
         <div className="flex items-center">
           <button
             className="btn btn-ghost btn-sm mr-4"
-            onClick={() => navigate("/cards")}
+            onClick={() => (user ? navigate("/cards") : navigate("/browse"))}
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back
@@ -136,10 +141,15 @@ export function CardDetail({ cardId }: CardDetailProps) {
           <h2 className="text-xl font-bold">{card.title}</h2>
         </div>
         <div className="flex gap-2">
-          <a href={`/cards/${card.id}/edit`} className="btn btn-outline btn-sm">
-            <Edit className="h-4 w-4 mr-2" />
-            Edit
-          </a>
+          {user && user.role === "admin" && (
+            <a
+              href={`/cards/${card.id}/edit`}
+              className="btn btn-outline btn-sm"
+            >
+              <Edit className="h-4 w-4 mr-2" />
+              Edit
+            </a>
+          )}
           <button className="btn btn-primary btn-sm" onClick={handleShare}>
             {showCopySuccess ? (
               <>
@@ -170,18 +180,24 @@ export function CardDetail({ cardId }: CardDetailProps) {
 
             {/* Card Actions */}
             <div className="mt-6 flex flex-wrap gap-2">
-              <a href={`/cards/${card.id}/edit`} className="btn btn-outline">
-                <Edit className="h-4 w-4 mr-2" />
-                Edit Card
-              </a>
+              {user && user.role === "admin" && (
+                <a href={`/cards/${card.id}/edit`} className="btn btn-outline">
+                  <Edit className="h-4 w-4 mr-2" />
+                  Edit Card
+                </a>
+              )}
+
               <button className="btn btn-primary" onClick={handleShare}>
                 <Share2 className="h-4 w-4 mr-2" />
                 Share Card
               </button>
-              <button className="btn btn-error" onClick={handleDelete}>
-                <Trash2 className="h-4 w-4 mr-2" />
-                Delete
-              </button>
+
+              {user && user.role === "admin" && (
+                <button className="btn btn-error" onClick={handleDelete}>
+                  <Trash2 className="h-4 w-4 mr-2" />
+                  Delete
+                </button>
+              )}
             </div>
           </div>
 

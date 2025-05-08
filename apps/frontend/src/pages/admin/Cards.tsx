@@ -316,11 +316,10 @@ export default function CardsPage() {
                     <td>
                       <div className="flex items-center gap-2">
                         <div className="avatar">
-                          <div className="w-6 rounded-full">
-                            <img
-                              src={card.owner?.avatar || "/placeholder.svg"}
-                              alt={card.owner?.fullName}
-                            />
+                          <div className="bg-primary text-neutral-content rounded-full w-10">
+                            <span className="text-xl h-full flex font-bold items-center justify-center">
+                              {card.owner?.fullName?.[0]?.toUpperCase() || "B"}
+                            </span>
                           </div>
                         </div>
                         <span>{card.owner?.fullName}</span>
@@ -382,6 +381,17 @@ export default function CardsPage() {
                     </td>
                   </tr>
                 ))}
+
+                {currentCards.length === 0 && (
+                  <tr>
+                    <td
+                      className="text-center text-base font-bold"
+                      colSpan={10}
+                    >
+                      No cards found!
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
 

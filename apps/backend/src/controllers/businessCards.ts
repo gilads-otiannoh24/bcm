@@ -63,16 +63,6 @@ export const getCard = asyncHandler(
       );
     }
 
-    // Make sure user is card owner or admin
-    if (card.owner.id !== req.user!.id && req.user!.role !== "admin") {
-      return next(
-        new ErrorResponse(
-          `User ${req.user!.id} is not authorized to access this card`,
-          401
-        )
-      );
-    }
-
     res.status(200).json({
       success: true,
       data: card,
@@ -101,7 +91,7 @@ export const getMyCards = asyncHandler(
 export const createCard = asyncHandler(
   async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
     // Add user to req.body
-    req.body.owner = req.user!.id;
+    req.body.owner = req.body.userId || req.user!.id;
 
     // Check if user has organization
     if (req.user!.organization) {
@@ -114,7 +104,11 @@ export const createCard = asyncHandler(
     await Activity.create({
       user: req.user!.id,
       type: "card_created",
-      details: `Created business card: ${card.title}`,
+      details: `Created business card: ${card.title} ${
+        req.body.userId
+          ? `for user ${(await User.findById(req.body.userId))?.firstName}`
+          : ""
+      }`,
       relatedCard: card._id,
     });
 

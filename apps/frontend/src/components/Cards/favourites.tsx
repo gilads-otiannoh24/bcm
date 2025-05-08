@@ -13,6 +13,7 @@ import { useAuth } from "../../context/AuthContext";
 import { ServerSettings } from "../Settings/settings-page";
 import { BusinessCard } from "@shared/types";
 import useToastStore from "../../hooks/useToast";
+import { AxiosError } from "axios";
 
 // Define card types
 export type CardTemplate =
@@ -170,12 +171,12 @@ export function Favourites() {
 
   const handleFavouriteCard = async (card: BusinessCard) => {
     if (!user) {
-      let favs = localStorage.getItem("favourites");
+      const favs = localStorage.getItem("favourites");
 
       if (favs) {
         const favsR = JSON.parse(favs) as BusinessCard[];
 
-        let exists = favsR.filter((c) => c.id === card.id);
+        const exists = favsR.filter((c) => c.id === card.id);
 
         if (exists.length > 0) {
           toast.warning("Card already in favourites!");

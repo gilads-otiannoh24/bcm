@@ -1,19 +1,15 @@
 import type { Request, Response, NextFunction } from "express";
 import type { Model, Query } from "mongoose";
 
+interface Pagination {
+  next?: { page: number; limit: number };
+  prev?: { page: number; limit: number };
+}
+
 interface QueryResult {
   success: boolean;
   count: number;
-  pagination?: {
-    next?: {
-      page: number;
-      limit: number;
-    };
-    prev?: {
-      page: number;
-      limit: number;
-    };
-  };
+  pagination?: Pagination;
   data: any[];
 }
 
@@ -21,8 +17,23 @@ export interface AdvancedResultsResponse extends Response {
   advancedResults?: QueryResult;
 }
 
+interface AdvancedOptions {
+  searchableFields?: string[];
+  populate?: string | string[] | object | object[] | Array<string | object>;
+  defaultLimit?: number;
+  defaultSort?: string;
+}
+
 const advancedResults =
-  (model: Model<any>, populate?: string | string[] | object | object[]) =>
+  (
+    model: Model<any>,
+    {
+      searchableFields = [],
+      populate = undefined,
+      defaultLimit = 25,
+      defaultSort = "-createdAt",
+    }: AdvancedOptions = {}
+  ) =>
   async (
     req: Request,
     res: AdvancedResultsResponse,
@@ -30,80 +41,69 @@ const advancedResults =
   ): Promise<void> => {
     let query: Query<any[], any, {}, any, "find">;
 
-    // Copy req.query
     const reqQuery = { ...req.query };
+    const reservedFields = ["select", "sort", "page", "limit", "search"];
+    reservedFields.forEach((param) => delete reqQuery[param]);
 
-    // Fields to exclude
-    const removeFields = ["select", "sort", "page", "limit"];
+    // Build filtering conditions
+    const filterConditions: Record<string, any> = { ...reqQuery };
 
-    // Loop over removeFields and delete them from reqQuery
-    removeFields.forEach((param) => delete reqQuery[param]);
+    // Build search conditions
+    let searchCondition = {};
+    const search = (req.query.search as string)?.trim();
+    if (search && searchableFields.length > 0) {
+      searchCondition = {
+        $or: searchableFields.map((field) => ({
+          [field]: { $regex: search, $options: "i" },
+        })),
+      };
+    }
 
-    // Create query string
-    let queryStr = JSON.stringify(reqQuery);
+    // Merge filters and search
+    query = model.find({ ...filterConditions, ...searchCondition });
 
-    // Create operators ($gt, $gte, etc)
-    queryStr = queryStr.replace(
-      /\b(gt|gte|lt|lte|in)\b/g,
-      (match) => `$${match}`
-    );
-
-    // Finding resource
-    query = model.find(JSON.parse(queryStr));
-
-    // Select Fields
+    // Field selection
     if (req.query.select) {
       const fields = (req.query.select as string).split(",").join(" ");
       query = query.select(fields);
     }
 
-    // Sort
-    if (req.query.sort) {
-      const sortBy = (req.query.sort as string).split(",").join(" ");
-      query = query.sort(sortBy);
-    } else {
-      query = query.sort("-createdAt");
-    }
+    // Sorting
+    const sortBy = req.query.sort
+      ? (req.query.sort as string).split(",").join(" ")
+      : defaultSort;
+    query = query.sort(sortBy);
 
     // Pagination
-    const page = Number.parseInt(req.query.page as string, 10) || 1;
-    const limit = Number.parseInt(req.query.limit as string, 10) || 25;
+    const page = parseInt(req.query.page as string) || 1;
+    const limit = parseInt(req.query.limit as string) || defaultLimit;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
-    const total = await model.countDocuments(JSON.parse(queryStr));
+    const total = await model.countDocuments({
+      ...filterConditions,
+      ...searchCondition,
+    });
 
     query = query.skip(startIndex).limit(limit);
 
+    // Populate
     if (populate) {
-      if (Array.isArray(populate)) {
-        populate.forEach((item) => {
+      const populations = Array.isArray(populate) ? populate : [populate];
+
+      populations.forEach((item) => {
+        if (typeof item === "string" || typeof item === "object") {
           query = query.populate(item);
-        });
-      } else {
-        // @ts-ignore
-        query = query.populate(populate);
-      }
+        } else {
+          console.warn("Invalid populate type:", typeof item);
+        }
+      });
     }
 
-    // Executing query
     const results = await query;
 
-    // Pagination result
-    const pagination: QueryResult["pagination"] = {};
-
-    if (endIndex < total) {
-      pagination.next = {
-        page: page + 1,
-        limit,
-      };
-    }
-
-    if (startIndex > 0) {
-      pagination.prev = {
-        page: page - 1,
-        limit,
-      };
-    }
+    const pagination: Pagination = {};
+    if (endIndex < total) pagination.next = { page: page + 1, limit };
+    if (startIndex > 0) pagination.prev = { page: page - 1, limit };
 
     res.advancedResults = {
       success: true,

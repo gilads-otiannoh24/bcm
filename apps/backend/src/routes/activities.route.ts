@@ -22,20 +22,22 @@ router.get("/:id", getActivity);
 router.get(
   "/",
   authorize("admin"),
-  advancedResults(Activity, [
-    {
-      path: "user",
-      select: "firstName lastName email avatar",
-    },
-    {
-      path: "relatedUser",
-      select: "firstName lastName email avatar",
-    },
-    {
-      path: "relatedCard",
-      select: "title name jobTitle company template color",
-    },
-  ]),
+  advancedResults(Activity, {
+    populate: [
+      {
+        path: "user",
+        select: "firstName lastName email avatar",
+      },
+      {
+        path: "relatedUser",
+        select: "firstName lastName email avatar",
+      },
+      {
+        path: "relatedCard",
+        select: "title name jobTitle company template color",
+      },
+    ],
+  }),
   getActivities
 );
 

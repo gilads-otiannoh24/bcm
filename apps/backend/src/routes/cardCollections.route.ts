@@ -25,13 +25,13 @@ router.route("/").get(getCollections).post(createCollection);
 router
   .route("/:id")
   .get(
-    advancedResults(CardCollection, [
-      {
+    advancedResults(CardCollection, {
+      populate: {
         path: "card",
         select:
           "title name jobTitle company email phone template color preview",
       },
-    ]),
+    }),
     getCollection
   )
   .patch(updateCollection)

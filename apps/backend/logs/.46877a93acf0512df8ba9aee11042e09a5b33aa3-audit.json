@@ -24,6 +24,11 @@
             "date": 1746047677419,
             "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-05-01.log",
             "hash": "92b9f23767a5a6831c1480c162b2b19deb672ba95a1c1b529053d8530c2e11d7"
+        },
+        {
+            "date": 1746695652430,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/application-2025-05-08.log",
+            "hash": "8a04c179fbd29f055734e5e7c46ec8a7b92591a444fd585a713e38011c86c3ee"
         }
     ],
     "hashType": "sha256"

@@ -116,14 +116,7 @@ const AppRoutes = () => {
                     }
                   ></Route>
                   <Route path=":id">
-                    <Route
-                      index
-                      element={
-                        <ProtectedRoute>
-                          <CardDetailPage />
-                        </ProtectedRoute>
-                      }
-                    ></Route>
+                    <Route index element={<CardDetailPage />}></Route>
                     <Route
                       path="edit"
                       element={
@@ -137,7 +130,7 @@ const AppRoutes = () => {
                   <Route
                     path="create"
                     element={
-                      <ProtectedRoute>
+                      <ProtectedRoute roles={["admin"]}>
                         <CreateCardPage />
                       </ProtectedRoute>
                     }

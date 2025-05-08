@@ -23,16 +23,18 @@ router.route("/").get(getConnections).post(createConnection);
 router
   .route("/:id")
   .get(
-    advancedResults(Connection, [
-      {
-        path: "contact",
-        select: "firstName lastName email avatar",
-      },
-      {
-        path: "card",
-        select: "title name jobTitle company email phone template color",
-      },
-    ]),
+    advancedResults(Connection, {
+      populate: [
+        {
+          path: "contact",
+          select: "firstName lastName email avatar",
+        },
+        {
+          path: "card",
+          select: "title name jobTitle company email phone template color",
+        },
+      ],
+    }),
     getConnection
   )
   .patch(updateConnection)

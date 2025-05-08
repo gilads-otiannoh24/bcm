@@ -49,11 +49,10 @@ export function TopUsersTable() {
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">
-                    <div className="w-8 rounded-full">
-                      <img
-                        src={user.avatar || "/placeholder.svg"}
-                        alt={user.fullName}
-                      />
+                    <div className="bg-primary text-neutral-content rounded-full w-8">
+                      <span className="text-xl h-full flex font-bold items-center justify-center">
+                        {user?.fullName?.[0]?.toUpperCase() || "B"}
+                      </span>
                     </div>
                   </div>
                   <div>

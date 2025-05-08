@@ -31,7 +31,8 @@ api.interceptors.response.use(
       if (
         err.response?.status === 401 &&
         !window.location.pathname.startsWith("/reset-password") &&
-        !allowedRoutes.includes(window.location.pathname)
+        !allowedRoutes.includes(window.location.pathname) &&
+        !checkAllowedCardsPages()
       ) {
         window.location.href = "/login";
       }
@@ -40,5 +41,18 @@ api.interceptors.response.use(
     return Promise.reject(err);
   }
 );
+
+function checkAllowedCardsPages(): boolean {
+  const disAllowedCardsPages = [
+    "/cards/browse",
+    "/cards/edit",
+    "/cards/create",
+  ];
+
+  if (disAllowedCardsPages.includes(window.location.pathname)) return false;
+  else if (window.location.pathname.startsWith("/cards/")) return true;
+
+  return false;
+}
 
 export default api;

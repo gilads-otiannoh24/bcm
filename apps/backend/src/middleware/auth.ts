@@ -40,7 +40,6 @@ export const protect = asyncHandler(
       const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
 
       req.user = (await User.findById(decoded.id)) as IUser;
-
       next();
     } catch (err) {
       return next(

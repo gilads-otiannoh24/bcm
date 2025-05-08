@@ -6,16 +6,6 @@
     "auditLog": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/.a0ce52bb22af0ae87a61be970af00e66c04bbafc-audit.json",
     "files": [
         {
-            "date": 1744020299216,
-            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-07.log",
-            "hash": "bd1f7db752b4d907efe88ec211d512edeca48b1da0051b757bd97d1bb7e6f7c0"
-        },
-        {
-            "date": 1744094256568,
-            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-08.log",
-            "hash": "9ffa84eb1648feb08539620125159f0ab45bc950ba2b0a767b1b1c223e40e09f"
-        },
-        {
             "date": 1744173267119,
             "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-04-09.log",
             "hash": "7412da5101232001e49aebd4be2eafbbec9861a224714e30c1fbc4b3a500f9e0"
@@ -59,6 +49,11 @@
             "date": 1746047677423,
             "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-05-01.log",
             "hash": "50957f11081e39430ce1c38814c263b95e92c888a4e0a15994d545bcaf3dde9a"
+        },
+        {
+            "date": 1746695652435,
+            "name": "/home/ian-otieno-ochieng/Desktop/work/full-stack-react-node/apps/backend/logs/error-2025-05-08.log",
+            "hash": "c5d55f74692e4c69793fefff74c3c3fb488f8d94506e213e4d49ecd0efdecef6"
         }
     ],
     "hashType": "sha256"

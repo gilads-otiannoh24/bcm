@@ -39,9 +39,9 @@ export function CardGrid({
       {cards.map((card) => (
         <div
           key={card.id}
-          className="card bg-base-100 shadow-xl transform duration-200 hover:scale-102"
+          className="card bg-base-100 shadow-xl transform duration-200 hover:scale-102 relative"
         >
-          <figure className="relative h-48">
+          <figure className="h-48">
             <div className="w-full h-full">
               <CardPreview card={card} />
             </div>
@@ -56,7 +56,7 @@ export function CardGrid({
                 </div>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                  className="dropdown-content z-[5] menu p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
                     <button onClick={() => onShare(card.id)}>
@@ -120,7 +120,7 @@ export function CardGrid({
               </div>
             )}
           </figure>
-          <div className="card-body">
+          <div className="card-body z-[1]">
             <h2 className="card-title">{card.title}</h2>
             <p className="text-base-content/70">
               {card.template.charAt(0).toUpperCase() + card.template.slice(1)}{" "}

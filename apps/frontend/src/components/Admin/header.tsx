@@ -90,13 +90,12 @@ export function AdminHeader() {
             <div
               tabIndex={0}
               role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className="btn btn-ghost btn-circle avatar placeholder"
             >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Admin avatar"
-                  src="/placeholder.svg?height=40&width=40"
-                />
+              <div className="bg-primary text-neutral-content rounded-full w-10">
+                <span className="text-xl h-full flex font-bold items-center justify-center">
+                  {user?.fullName?.[0]?.toUpperCase() || "B"}
+                </span>
               </div>
             </div>
             <ul

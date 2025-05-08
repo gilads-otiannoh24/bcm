@@ -15,12 +15,16 @@ import {
   Globe,
   MapPin,
   Save,
+  X,
+  UserRoundSearch,
 } from "lucide-react";
 import { CardPreview } from "./card-preview";
 import type { CardTemplate } from "./my-cards";
 import { useNavigate } from "react-router-dom";
 import api from "../../lib/axios";
 import useToastStore from "../../hooks/useToast";
+import { useAuth } from "../../context/AuthContext";
+import { User as UserType } from "@shared/types";
 
 // Define the form data type
 type CardFormData = {
@@ -34,6 +38,7 @@ type CardFormData = {
   address: string;
   template: CardTemplate;
   color: string;
+  userId?: string;
 };
 
 // Template options
@@ -89,8 +94,17 @@ export function CardCreator() {
   // Define steps
   const steps = ["Template", "Design", "Information", "Preview"];
   const [currentStep, setCurrentStep] = useState(0);
+  const [selectedUser, setSelectedUser] = useState<UserType | null>(null);
+  const [filteredUsers, setFilteredUsers] = useState<UserType[]>([]);
+  const [searchDebounce, setSearchDebounce] = useState<ReturnType<
+    typeof setTimeout
+  > | null>(null);
+
+  const [searchingUsers, setSearchingUsers] = useState(true);
+  const [userSearchQuery, setUserSearchQuery] = useState("");
   const navigate = useNavigate();
   const { toast } = useToastStore();
+  const { user } = useAuth();
 
   // Form data state
   const [formData, setFormData] = useState<CardFormData>({
@@ -104,6 +118,7 @@ export function CardCreator() {
     address: "Your Location",
     template: "professional",
     color: "blue",
+    userId: user?.id ?? "",
   });
 
   // Handle input changes
@@ -114,6 +129,37 @@ export function CardCreator() {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleUserSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+
+    setUserSearchQuery(value);
+
+    if (searchDebounce !== null) {
+      clearTimeout(searchDebounce);
+    }
+
+    setSearchDebounce(
+      setTimeout(async () => {
+        await seachForUsers();
+      }, 500)
+    );
+  };
+
+  const seachForUsers = async () => {
+    try {
+      setSearchingUsers(true);
+      const res = await api.get(`/users?search=${userSearchQuery}`);
+
+      if (res.status === 200) {
+        setFilteredUsers(res.data.data);
+      }
+    } catch (error: any) {
+      toast.error("An error occured while searching for users");
+    } finally {
+      setSearchingUsers(false);
+    }
   };
 
   // Handle template selection
@@ -148,10 +194,9 @@ export function CardCreator() {
       const res = await api.post("/businesscards", formData);
 
       if (res.data.success) {
-        return navigate("/cards");
+        return navigate("/admin/cards");
       }
     } catch (error: any) {
-
       if (error.status === 400) {
         return toast.error("Invalid input");
       }
@@ -265,8 +310,8 @@ export function CardCreator() {
             </p>
 
             <form className="mt-6 space-y-4">
-              <div className="form-control">
-                <label className="label">
+              <div className="fieldset">
+                <label className="fieldset-legend">
                   <span className="label-text">
                     Card Title (for your reference)
                   </span>
@@ -284,8 +329,8 @@ export function CardCreator() {
                 </div>
               </div>
 
-              <div className="form-control">
-                <label className="label">
+              <div className="fieldset">
+                <label className="fieldset-legend">
                   <span className="label-text">Full Name</span>
                 </label>
                 <div className="flex items-center">
@@ -301,8 +346,8 @@ export function CardCreator() {
                 </div>
               </div>
 
-              <div className="form-control">
-                <label className="label">
+              <div className="fieldset">
+                <label className="fieldset-legend">
                   <span className="label-text">Job Title</span>
                 </label>
                 <div className="flex items-center">
@@ -318,8 +363,8 @@ export function CardCreator() {
                 </div>
               </div>
 
-              <div className="form-control">
-                <label className="label">
+              <div className="fieldset">
+                <label className="fieldset-legend">
                   <span className="label-text">Company</span>
                 </label>
                 <div className="flex items-center">
@@ -335,8 +380,8 @@ export function CardCreator() {
                 </div>
               </div>
 
-              <div className="form-control">
-                <label className="label">
+              <div className="fieldset">
+                <label className="fieldset-legend">
                   <span className="label-text">Email</span>
                 </label>
                 <div className="flex items-center">
@@ -352,8 +397,8 @@ export function CardCreator() {
                 </div>
               </div>
 
-              <div className="form-control">
-                <label className="label">
+              <div className="fieldset">
+                <label className="fieldset-legend">
                   <span className="label-text">Phone</span>
                 </label>
                 <div className="flex items-center">
@@ -369,8 +414,8 @@ export function CardCreator() {
                 </div>
               </div>
 
-              <div className="form-control">
-                <label className="label">
+              <div className="fieldset">
+                <label className="fieldset-legend">
                   <span className="label-text">Website (optional)</span>
                 </label>
                 <div className="flex items-center">
@@ -386,8 +431,8 @@ export function CardCreator() {
                 </div>
               </div>
 
-              <div className="form-control">
-                <label className="label">
+              <div className="fieldset">
+                <label className="fieldset-legend">
                   <span className="label-text">Address (optional)</span>
                 </label>
                 <div className="flex items-center">
@@ -401,6 +446,82 @@ export function CardCreator() {
                     placeholder="San Francisco, CA"
                   />
                 </div>
+              </div>
+
+              <div className="fieldset">
+                <label className="fieldset-legend">
+                  <span className="label-text">
+                    User{" "}
+                    <span className="dark:text-gray-400 text-gray-200">
+                      (Use name or email to search for a user)
+                    </span>
+                  </span>
+                </label>
+                <div className="flex items-center">
+                  <UserRoundSearch className="h-5 w-5 mr-2 text-base-content/50" />
+                  <label className="input w-full">
+                    {selectedUser && (
+                      <span className="badge badge-primary">
+                        {selectedUser?.firstName}
+                        <span className="badge ml-2 badge-sm badge-secondary">
+                          {selectedUser?.email}
+                        </span>
+                      </span>
+                    )}
+                    <input
+                      type="text"
+                      value={userSearchQuery}
+                      onChange={handleUserSearch}
+                      className="grow"
+                      disabled={selectedUser !== null}
+                      placeholder="Enter name or email to search"
+                    />
+
+                    {(userSearchQuery || selectedUser) && (
+                      <span
+                        onClick={() => {
+                          setUserSearchQuery("");
+                          setSelectedUser(null);
+                          formData.userId = "";
+                        }}
+                        className="bg-primary p-1 cursor-pointer rounded-full text-white"
+                      >
+                        <X className="size-4" />
+                      </span>
+                    )}
+                  </label>
+                </div>
+                {userSearchQuery && (
+                  <div className="mt-2 p-2 w-full bg-base-300 space-y-2">
+                    {searchingUsers ? (
+                      <div className="py-12 flex items-center justify-center">
+                        <div className="loading loading-spinner text-primary"></div>
+                      </div>
+                    ) : (
+                      <>
+                        {filteredUsers.map((user) => (
+                          <div
+                            className="p-4 hover:bg-gray-200 hover:dark:bg-gray-800 flex items-center justify-between max-w-xl w-full"
+                            onClick={() => {
+                              setSelectedUser(user);
+                              setUserSearchQuery("");
+                              formData.userId = user.id;
+                            }}
+                          >
+                            <span>{user.fullName}</span>
+                            <span className="text-secondary-content">
+                              {user.email}
+                            </span>
+                          </div>
+                        ))}
+
+                        {filteredUsers.length === 0 && (
+                          <div>No matching results found</div>
+                        )}
+                      </>
+                    )}
+                  </div>
+                )}
               </div>
             </form>
           </div>

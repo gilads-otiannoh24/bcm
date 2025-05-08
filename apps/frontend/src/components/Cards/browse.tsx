@@ -54,7 +54,7 @@ export function BrowseCards() {
     const getCards = async () => {
       try {
         setLoading(true);
-        const response = await api.get("/businesscards");
+        const response = await api.get("/businesscards?status=active");
 
         if (response.data.success) {
           setCards(response.data.data);
@@ -141,7 +141,7 @@ export function BrowseCards() {
   // Handle card duplication
   const handleDuplicateCard = async (card: BusinessCard) => {
     try {
-      const res = await api.get(`/businesscards/${card.id}/duplicate`);
+      const res = await api.post(`/businesscards/${card.id}/duplicate`);
 
       if (res.status === 201) {
         setCards([...cards, res.data.data as BusinessCard]);

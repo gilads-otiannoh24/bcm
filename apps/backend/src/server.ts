@@ -4,7 +4,6 @@ import cookieParser from "cookie-parser";
 import mongoSanitize from "express-mongo-sanitize";
 import helmet from "helmet";
 import xss from "x-xss-protection";
-import rateLimit from "express-rate-limit";
 import hpp from "hpp";
 import cors from "cors";
 import connectDB from "./config/db";
@@ -24,6 +23,7 @@ import favourites from "./routes/favourites.route";
 import { config } from "dotenv";
 import { logError, logInfo } from "./utils/logger";
 import { User } from "./models/User";
+import { Settings } from "./models/Settings";
 
 // Load env vars
 config();
@@ -49,13 +49,6 @@ app.use(helmet());
 
 // Prevent XSS attacks
 app.use(xss());
-
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: 10 * 60 * 1000, // 10 mins
-  max: 100,
-});
-app.use(limiter);
 
 // Prevent http param pollution
 app.use(hpp());
@@ -120,7 +113,10 @@ const server = app.listen(PORT, async () => {
       status: "active",
     };
 
-    await User.create(userDetails);
+    const user = await User.create(userDetails);
+    await Settings.create({
+      user: user._id,
+    });
     logInfo("Created first user!");
   }
 
@@ -137,7 +133,11 @@ const server = app.listen(PORT, async () => {
       status: "active",
     };
 
-    await User.create(adminDetails);
+    const user = await User.create(adminDetails);
+
+    await Settings.create({
+      user: user._id,
+    });
     logInfo("Created first admin");
   }
 });

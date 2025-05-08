@@ -25,12 +25,12 @@ router
   .route("/")
   .get(
     authorize("admin"),
-    advancedResults(Organization, [
-      {
+    advancedResults(Organization, {
+      populate: {
         path: "owner",
         select: "firstName lastName email",
       },
-    ]),
+    }),
     getOrganizations
   )
   .post(createOrganization);
