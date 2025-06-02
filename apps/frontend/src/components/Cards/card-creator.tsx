@@ -194,7 +194,8 @@ export function CardCreator() {
       const res = await api.post("/businesscards", formData);
 
       if (res.data.success) {
-        return navigate("/admin/cards");
+        toast.success("Business card created successfully");
+        return navigate("/cards");
       }
     } catch (error: any) {
       if (error.status === 400) {
@@ -448,7 +449,7 @@ export function CardCreator() {
                 </div>
               </div>
 
-              <div className="fieldset">
+              <div className="fieldset hidden">
                 <label className="fieldset-legend">
                   <span className="label-text">
                     User{" "}
@@ -507,6 +508,7 @@ export function CardCreator() {
                               setUserSearchQuery("");
                               formData.userId = user.id;
                             }}
+                            key={user.id}
                           >
                             <span>{user.fullName}</span>
                             <span className="text-secondary-content">

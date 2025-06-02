@@ -15,18 +15,20 @@ router.use(protect);
 router.get("/me", getUserActivities);
 router.get("/:id", getActivity);
 // Admin only routes
-router.get("/", authorize("admin"), (0, advancedResults_1.default)(Activity_1.Activity, [
-    {
-        path: "user",
-        select: "firstName lastName email avatar",
-    },
-    {
-        path: "relatedUser",
-        select: "firstName lastName email avatar",
-    },
-    {
-        path: "relatedCard",
-        select: "title name jobTitle company template color",
-    },
-]), getActivities);
+router.get("/", authorize("admin"), (0, advancedResults_1.default)(Activity_1.Activity, {
+    populate: [
+        {
+            path: "user",
+            select: "firstName lastName email avatar",
+        },
+        {
+            path: "relatedUser",
+            select: "firstName lastName email avatar",
+        },
+        {
+            path: "relatedCard",
+            select: "title name jobTitle company template color",
+        },
+    ],
+}), getActivities);
 exports.default = router;

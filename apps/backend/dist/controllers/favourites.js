@@ -10,24 +10,18 @@ const Favourites_1 = require("../models/Favourites");
 // Add a card to favourites
 exports.AddToFavourites = (0, async_1.default)(async (req, res, next) => {
     const userId = req.user._id;
-    const cardIds = req.body.ids;
-    const cardsToBeAdded = [];
+    const cardIds = req.body.ids || [];
     // Check if it's already in favourites
     cardIds.forEach(async (id) => {
-        const exists = await Favourites_1.Favourites.findOne({ user: userId, card: id });
-        if (!exists) {
-            cardsToBeAdded.push(id);
+        const exists = await Favourites_1.Favourite.findOne({ user: userId, card: id });
+        if (exists) {
+            return;
         }
+        await Favourites_1.Favourite.create({ user: userId, card: id });
     });
-    if (cardsToBeAdded.length === 0) {
-        return next(new errorResponse_1.default("Cards already in favourites", 400));
-    }
-    const favourites = [];
-    cardsToBeAdded.forEach(async (id) => {
-        const favourite = await Favourites_1.Favourites.create({ user: userId, card: id });
-        favourites.push(favourite);
-    });
+    const favourites = await Favourites_1.Favourite.find();
     res.status(201).json({
+        success: true,
         message: "Added to favourites",
         favourites,
     });
@@ -36,20 +30,31 @@ exports.AddToFavourites = (0, async_1.default)(async (req, res, next) => {
 exports.RemoveFromFavourites = (0, async_1.default)(async (req, res, next) => {
     const userId = req.user._id;
     const cardId = req.params.id;
-    const deleted = await Favourites_1.Favourites.findOneAndDelete({
+    if (!cardId) {
+        return next(new errorResponse_1.default("Card id s required", 400));
+    }
+    const deleted = await Favourites_1.Favourite.findOneAndDelete({
         user: userId,
         card: cardId,
     });
     if (!deleted) {
         return res.status(404).json({ message: "Favourite not found" });
     }
-    res.status(200).json({ message: "Removed from favourites" });
+    res.status(200).json({
+        success: true,
+        message: "Removed from favourites successfully!",
+    });
 });
 // Get all user's favourite cards
 exports.getMyFavourites = (0, async_1.default)(async (req, res, next) => {
     const userId = req.user._id;
-    const favourites = await Favourites_1.Favourites.find({ user: userId }).populate("card");
+    const favourites = await Favourites_1.Favourite.find({ user: userId }).populate([
+        "card",
+        "user",
+    ]);
     res.status(200).json({
+        success: true,
+        message: "Favourites retrieved successfully",
         count: favourites.length,
         favourites,
     });

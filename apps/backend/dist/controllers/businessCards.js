@@ -9,6 +9,7 @@ const Activity_1 = require("../models/Activity");
 const errorResponse_1 = __importDefault(require("../utils/errorResponse"));
 const async_1 = __importDefault(require("../middleware/async"));
 const logger_1 = require("../utils/logger");
+const User_1 = require("../models/User");
 // @desc    Get all business cards
 // @route   GET /api/v1/businesscards
 // @access  Private/Admin
@@ -25,10 +26,6 @@ exports.getCard = (0, async_1.default)(async (req, res, next) => {
     });
     if (!card) {
         return next(new errorResponse_1.default(`Business card not found with id of ${req.params.id}`, 404));
-    }
-    // Make sure user is card owner or admin
-    if (card.owner.id !== req.user.id && req.user.role !== "admin") {
-        return next(new errorResponse_1.default(`User ${req.user.id} is not authorized to access this card`, 401));
     }
     res.status(200).json({
         success: true,
@@ -51,7 +48,7 @@ exports.getMyCards = (0, async_1.default)(async (req, res, next) => {
 // @access  Private
 exports.createCard = (0, async_1.default)(async (req, res, next) => {
     // Add user to req.body
-    req.body.owner = req.user.id;
+    req.body.owner = req.body.userId || req.user.id;
     // Check if user has organization
     if (req.user.organization) {
         req.body.organization = req.user.organization.toString();
@@ -61,7 +58,9 @@ exports.createCard = (0, async_1.default)(async (req, res, next) => {
     await Activity_1.Activity.create({
         user: req.user.id,
         type: "card_created",
-        details: `Created business card: ${card.title}`,
+        details: `Created business card: ${card.title} ${req.body.userId
+            ? `for user ${(await User_1.User.findById(req.body.userId))?.firstName}`
+            : ""}`,
         relatedCard: card._id,
     });
     (0, logger_1.logInfo)(`Business card created: ${card._id} by user ${req.user.id}`);

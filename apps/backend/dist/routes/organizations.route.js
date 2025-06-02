@@ -14,12 +14,12 @@ router.use(protect);
 // Organization routes
 router
     .route("/")
-    .get(authorize("admin"), (0, advancedResults_1.default)(Organization_1.Organization, [
-    {
+    .get(authorize("admin"), (0, advancedResults_1.default)(Organization_1.Organization, {
+    populate: {
         path: "owner",
         select: "firstName lastName email",
     },
-]), getOrganizations)
+}), getOrganizations)
     .post(createOrganization);
 router
     .route("/:id")

@@ -110,7 +110,7 @@ const AppRoutes = () => {
                   <Route
                     index
                     element={
-                      <ProtectedRoute>
+                      <ProtectedRoute roles={["admin"]}>
                         <CardsPage />
                       </ProtectedRoute>
                     }
@@ -120,7 +120,7 @@ const AppRoutes = () => {
                     <Route
                       path="edit"
                       element={
-                        <ProtectedRoute>
+                        <ProtectedRoute roles={["admin"]}>
                           <EditCardPage />
                         </ProtectedRoute>
                       }

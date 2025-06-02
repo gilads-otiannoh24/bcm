@@ -9,6 +9,7 @@ import {
   MoreHorizontal,
   CheckCircle,
   Heart,
+  HeartOff,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { CardPreview } from "./card-preview";
@@ -20,6 +21,7 @@ type CardListProps = {
   onDelete: (card: BusinessCard) => void;
   onDuplicate: (card: BusinessCard) => void;
   onFavourite: (card: BusinessCard) => void;
+  onRemoveFromFavourite?: (card: BusinessCard) => void;
   onShare: (cardId: string) => void;
   showCopySuccess: string | null;
 };
@@ -31,6 +33,7 @@ export function CardList({
   onFavourite,
   onShare,
   showCopySuccess,
+  onRemoveFromFavourite,
 }: CardListProps) {
   const { user } = useAuth();
   return (
@@ -129,15 +132,29 @@ export function CardList({
                     tabIndex={0}
                     className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                   >
-                    {((user && user.id !== card.owner?.id) || !user) &&
-                      window.location.pathname !== "/favourites" && (
-                        <li>
-                          <button onClick={() => onFavourite(card)}>
-                            <Heart className="h-4 w-4" />
-                            Add to favourites
-                          </button>
-                        </li>
-                      )}
+                    {window.location.pathname !== "/favourites" && (
+                      <li>
+                        <button onClick={() => onFavourite(card)}>
+                          <Heart className="h-4 w-4" />
+                          Add to favourites
+                        </button>
+                      </li>
+                    )}
+
+                    {window.location.pathname === "/favourites" && (
+                      <li>
+                        <button
+                          onClick={() => {
+                            onRemoveFromFavourite
+                              ? onRemoveFromFavourite(card)
+                              : null;
+                          }}
+                        >
+                          <HeartOff className="h-4 w-4" />
+                          Remove from favourites
+                        </button>
+                      </li>
+                    )}
 
                     {user &&
                       (user.role === "admin" || user.id === card.owner?.id) && (

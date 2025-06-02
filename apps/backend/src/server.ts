@@ -8,6 +8,7 @@ import hpp from "hpp";
 import cors from "cors";
 import connectDB from "./config/db";
 import errorHandler from "./middleware/error";
+import rateLimit from "express-rate-limit";
 
 // Route files
 import auth from "./routes/auth.route";
@@ -40,6 +41,18 @@ app.use(cookieParser());
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
+
+// Create rate limiter middleware
+const limiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 1000000,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: "Too many requests from this IP, please try again later.",
+});
+
+// Apply the rate limiter to all requests
+app.use(limiter);
 
 // Sanitize data
 app.use(mongoSanitize());

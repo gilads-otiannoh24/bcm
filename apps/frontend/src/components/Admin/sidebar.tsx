@@ -70,7 +70,9 @@ export function AdminSidebar() {
               <div className="bg-primary text-primary-content p-2 rounded-lg mr-2">
                 <CreditCard className="h-6 w-6" />
               </div>
-              <span className="text-xl font-bold">BCM Admin</span>
+              <Link to={"/"} className="text-xl cursor-pointer font-bold">
+                BCM Admin
+              </Link>
             </div>
             <ul className="menu w-full">
               {navItems.map((item) => (

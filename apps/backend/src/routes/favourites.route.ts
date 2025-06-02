@@ -13,6 +13,6 @@ router.use(protect);
 router.get("/me", getMyFavourites);
 
 router.post("/add", AddToFavourites);
-router.post("/remove/:id", RemoveFromFavourites);
+router.delete("/:id", RemoveFromFavourites);
 
 export default router;

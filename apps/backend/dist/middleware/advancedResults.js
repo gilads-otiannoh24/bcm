@@ -1,66 +1,62 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const advancedResults = (model, populate) => async (req, res, next) => {
+const advancedResults = (model, { searchableFields = [], populate = undefined, defaultLimit = 25, defaultSort = "-createdAt", } = {}) => async (req, res, next) => {
     let query;
-    // Copy req.query
     const reqQuery = { ...req.query };
-    // Fields to exclude
-    const removeFields = ["select", "sort", "page", "limit"];
-    // Loop over removeFields and delete them from reqQuery
-    removeFields.forEach((param) => delete reqQuery[param]);
-    // Create query string
-    let queryStr = JSON.stringify(reqQuery);
-    // Create operators ($gt, $gte, etc)
-    queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g, (match) => `$${match}`);
-    // Finding resource
-    query = model.find(JSON.parse(queryStr));
-    // Select Fields
+    const reservedFields = ["select", "sort", "page", "limit", "search"];
+    reservedFields.forEach((param) => delete reqQuery[param]);
+    // Build filtering conditions
+    const filterConditions = { ...reqQuery };
+    // Build search conditions
+    let searchCondition = {};
+    const search = req.query.search?.trim();
+    if (search && searchableFields.length > 0) {
+        searchCondition = {
+            $or: searchableFields.map((field) => ({
+                [field]: { $regex: search, $options: "i" },
+            })),
+        };
+    }
+    // Merge filters and search
+    query = model.find({ ...filterConditions, ...searchCondition });
+    // Field selection
     if (req.query.select) {
         const fields = req.query.select.split(",").join(" ");
         query = query.select(fields);
     }
-    // Sort
-    if (req.query.sort) {
-        const sortBy = req.query.sort.split(",").join(" ");
-        query = query.sort(sortBy);
-    }
-    else {
-        query = query.sort("-createdAt");
-    }
+    // Sorting
+    const sortBy = req.query.sort
+        ? req.query.sort.split(",").join(" ")
+        : defaultSort;
+    query = query.sort(sortBy);
     // Pagination
-    const page = Number.parseInt(req.query.page, 10) || 1;
-    const limit = Number.parseInt(req.query.limit, 10) || 25;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || defaultLimit;
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
-    const total = await model.countDocuments(JSON.parse(queryStr));
+    const total = await model.countDocuments({
+        ...filterConditions,
+        ...searchCondition,
+    });
     query = query.skip(startIndex).limit(limit);
+    // Populate
     if (populate) {
-        if (Array.isArray(populate)) {
-            populate.forEach((item) => {
+        const populations = Array.isArray(populate) ? populate : [populate];
+        populations.forEach((item) => {
+            if (typeof item === "string" || typeof item === "object") {
                 query = query.populate(item);
-            });
-        }
-        else {
-            // @ts-ignore
-            query = query.populate(populate);
-        }
+            }
+            else {
+                console.warn("Invalid populate type:", typeof item);
+            }
+        });
     }
-    // Executing query
     const results = await query;
-    // Pagination result
     const pagination = {};
-    if (endIndex < total) {
-        pagination.next = {
-            page: page + 1,
-            limit,
-        };
-    }
-    if (startIndex > 0) {
-        pagination.prev = {
-            page: page - 1,
-            limit,
-        };
-    }
+    if (endIndex < total)
+        pagination.next = { page: page + 1, limit };
+    if (startIndex > 0)
+        pagination.prev = { page: page - 1, limit };
     res.advancedResults = {
         success: true,
         count: results.length,

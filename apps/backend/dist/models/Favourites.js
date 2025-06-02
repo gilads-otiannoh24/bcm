@@ -33,18 +33,22 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Favourites = void 0;
+exports.Favourite = void 0;
 const mongoose_1 = __importStar(require("mongoose"));
 const FavouritesSchema = new mongoose_1.Schema({
     user: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: "Users",
+        ref: "User",
         required: true,
     },
     card: {
         type: mongoose_1.Schema.Types.ObjectId,
-        ref: "Cards",
+        ref: "BusinessCard",
         required: true,
     },
+}, {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
 });
-exports.Favourites = mongoose_1.default.model("Favourites", FavouritesSchema);
+exports.Favourite = mongoose_1.default.model("Favourite", FavouritesSchema);

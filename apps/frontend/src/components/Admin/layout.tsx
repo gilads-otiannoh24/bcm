@@ -1,6 +1,7 @@
 import { AdminSidebar } from "./sidebar";
 import { AdminHeader } from "./header";
 import { Outlet } from "react-router-dom";
+import Footer from "../Footer";
 
 export default function AdminLayout() {
   return (
@@ -12,6 +13,8 @@ export default function AdminLayout() {
           <main className="p-4 md:p-6">
             <Outlet />
           </main>
+
+          <Footer />
         </div>
       </div>
     </div>

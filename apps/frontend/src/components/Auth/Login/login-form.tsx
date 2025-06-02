@@ -36,7 +36,7 @@ export function LoginForm() {
 
   const [canLogin, setCanLogin] = useState(false);
 
-  const { login } = useAuth();
+  const { login, user, checkAuth } = useAuth();
 
   const validationTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -133,8 +133,14 @@ export function LoginForm() {
 
       const response = await login(formData);
 
+      await checkAuth();
+
       if (response.data.success) {
-        window.location.href = "/cards";
+        if (user?.role === "admin") {
+          window.location.href = "/cards";
+        } else {
+          window.location.href = "/browse";
+        }
       } else {
         // Failed login
         setLoginError(response.data.message);

@@ -31,21 +31,24 @@ export function MyCards() {
   const [cardToDelete, setCardToDelete] = useState<BusinessCard | null>(null);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [showCopySuccess, setShowCopySuccess] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const naviagate = useNavigate();
+  const navigate = useNavigate();
   const setCrtitcaError = useCriticalErrorStore(
     (state) => state.setCriticalError
   );
   const setError = useCriticalErrorStore((state) => state.setError);
 
-  const { getUserSettings, setCardDisplayMode } = useAuth();
+  const {
+    getUserSettings,
+    setCardDisplayMode,
+    loading: authLoading,
+  } = useAuth();
   const { toast } = useToastStore();
 
   useEffect(() => {
     const getCards = async () => {
       try {
-        setLoading(true);
         const response = await api.get("/businesscards/me");
 
         if (response.data.success) {
@@ -53,7 +56,7 @@ export function MyCards() {
         }
       } catch (err: any) {
         if (err.status === 401) {
-          return naviagate("/unauthorized");
+          return navigate("/unauthorized");
         } else {
           setCrtitcaError(true);
           setError(new Error(err.response.data.message ?? "Error"));
@@ -87,36 +90,6 @@ export function MyCards() {
     getPrefferedViewMode();
   }, []);
 
-  useEffect(() => {
-    // check for favourites in localStorage and add to users favourites automatically and reset
-    const addFavouritesAutomatically = async () => {
-      const favsJson = localStorage.getItem("favourites");
-
-      if (!favsJson) return;
-
-      const favs = JSON.parse(favsJson) as BusinessCard[];
-
-      if (!favs) return;
-
-      try {
-        const res = await api.post("/favourites/add", {
-          ids: favs.map((f) => f.id),
-        });
-
-        if (res.status === 201) {
-          localStorage.removeItem("favourites");
-          toast.success("Favourites updated successfully!");
-        }
-      } catch (error: any) {
-        if (error.status === 400) {
-          toast.error("Error updating your favourites!");
-        }
-      }
-    };
-
-    addFavouritesAutomatically();
-  }, []);
-
   // Filter cards based on search term and filters
   const filteredCards = cards.filter((card) => {
     const matchesSearch =
@@ -139,11 +112,24 @@ export function MyCards() {
   };
 
   // Confirm card deletion
-  const confirmDeleteCard = () => {
+  const confirmDeleteCard = async () => {
     if (cardToDelete) {
-      setCards(cards.filter((card) => card.id !== cardToDelete.id));
-      setIsDeleteModalOpen(false);
-      setCardToDelete(null);
+      try {
+        const res = await api.delete(`businesscards/${cardToDelete.id}`);
+
+        if (res.data.success) {
+          toast.success("Card deleted successfully!");
+          setCards(cards.filter((card) => card.id !== cardToDelete.id));
+        }
+      } catch (error: any) {
+        if (error.status === 404) {
+          toast.error("Card not found!");
+        }
+        console.error(error);
+      } finally {
+        setIsDeleteModalOpen(false);
+        setCardToDelete(null);
+      }
     }
   };
 
@@ -165,9 +151,9 @@ export function MyCards() {
 
   const handleFavouriteCard = async (card: BusinessCard) => {
     try {
-      const res = await api.post("/favourites/add", { id: card.id });
+      const res = await api.post("/favourites/add", { ids: [card.id] });
 
-      if (res.status === 200) {
+      if (res.status === 201) {
         toast.success("Card added to favourites");
       }
     } catch (error: any) {
@@ -199,7 +185,12 @@ export function MyCards() {
     <div className="space-y-6">
       {/* Actions Bar */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-        <div></div>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/cards/create")}
+        >
+          New card
+        </button>
 
         <div className="flex items-center gap-2">
           <button
@@ -278,7 +269,7 @@ export function MyCards() {
 
       {/* Cards Display */}
       {filteredCards.length === 0 ? (
-        loading ? (
+        loading || authLoading ? (
           <div className="flex justify-center items-center py-8 h-fit">
             <Loading />
           </div>

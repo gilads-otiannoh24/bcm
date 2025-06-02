@@ -18,7 +18,10 @@ router.use(protect);
 // Admin only routes
 router
     .route("/")
-    .get(authorize("admin"), (0, advancedResults_1.default)(User_1.User, ["cards"]), getUsers)
+    .get(authorize("admin"), (0, advancedResults_1.default)(User_1.User, {
+    populate: ["cards"],
+    searchableFields: ["name", "email"],
+}), getUsers)
     .post(authorize("admin"), createUser);
 router.route("/topusers").get(authorize("admin"), users_1.getTopUsers);
 router.post("/deletebulk", authorize("admin"), users_1.deleteBulkUsers);

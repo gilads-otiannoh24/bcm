@@ -6,3 +6,4 @@ export * from "./connection";
 export * from "./activity";
 export * from "./api";
 export * from "./auth";
+export * from "./favourites";

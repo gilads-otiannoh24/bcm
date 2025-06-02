@@ -1,26 +1,33 @@
 import mongoose, { type Document, Model, Schema } from "mongoose";
 
-export interface IFavourites extends Document {
+export interface IFavourite extends Document {
   user: mongoose.Types.ObjectId;
   card: mongoose.Types.ObjectId;
 }
 
-interface IFavouritesModel extends Model<IFavourites> {}
+interface IFavouriteModel extends Model<IFavourite> {}
 
-const FavouritesSchema = new Schema<IFavourites>({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "Users",
-    required: true,
+const FavouritesSchema = new Schema<IFavourite>(
+  {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+    card: {
+      type: Schema.Types.ObjectId,
+      ref: "BusinessCard",
+      required: true,
+    },
   },
-  card: {
-    type: Schema.Types.ObjectId,
-    ref: "Cards",
-    required: true,
-  },
-});
+  {
+    timestamps: true,
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
+);
 
-export const Favourites = mongoose.model<IFavourites, IFavouritesModel>(
-  "Favourites",
+export const Favourite = mongoose.model<IFavourite, IFavouriteModel>(
+  "Favourite",
   FavouritesSchema
 );

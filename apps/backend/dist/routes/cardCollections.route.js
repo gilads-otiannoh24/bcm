@@ -15,12 +15,12 @@ router.use(protect);
 router.route("/").get(getCollections).post(createCollection);
 router
     .route("/:id")
-    .get((0, advancedResults_1.default)(CardCollection_1.CardCollection, [
-    {
+    .get((0, advancedResults_1.default)(CardCollection_1.CardCollection, {
+    populate: {
         path: "card",
         select: "title name jobTitle company email phone template color preview",
     },
-]), getCollection)
+}), getCollection)
     .patch(updateCollection)
     .delete(deleteCollection);
 // Collection actions

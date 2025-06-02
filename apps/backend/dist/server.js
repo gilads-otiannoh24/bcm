@@ -9,11 +9,11 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const express_mongo_sanitize_1 = __importDefault(require("express-mongo-sanitize"));
 const helmet_1 = __importDefault(require("helmet"));
 const x_xss_protection_1 = __importDefault(require("x-xss-protection"));
-const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const hpp_1 = __importDefault(require("hpp"));
 const cors_1 = __importDefault(require("cors"));
 const db_1 = __importDefault(require("./config/db"));
 const error_1 = __importDefault(require("./middleware/error"));
+const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 // Route files
 const auth_route_1 = __importDefault(require("./routes/auth.route"));
 const settings_route_1 = __importDefault(require("./routes/settings.route"));
@@ -28,6 +28,7 @@ const favourites_route_1 = __importDefault(require("./routes/favourites.route"))
 const dotenv_1 = require("dotenv");
 const logger_1 = require("./utils/logger");
 const User_1 = require("./models/User");
+const Settings_1 = require("./models/Settings");
 // Load env vars
 (0, dotenv_1.config)();
 const app = (0, express_1.default)();
@@ -39,18 +40,22 @@ app.use((0, cookie_parser_1.default)());
 if (process.env.NODE_ENV === "development") {
     app.use((0, morgan_1.default)("dev"));
 }
+// Create rate limiter middleware
+const limiter = (0, express_rate_limit_1.default)({
+    windowMs: 60 * 1000,
+    max: 1000000,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: "Too many requests from this IP, please try again later.",
+});
+// Apply the rate limiter to all requests
+app.use(limiter);
 // Sanitize data
 app.use((0, express_mongo_sanitize_1.default)());
 // Set security headers
 app.use((0, helmet_1.default)());
 // Prevent XSS attacks
 app.use((0, x_xss_protection_1.default)());
-// Rate limiting
-const limiter = (0, express_rate_limit_1.default)({
-    windowMs: 10 * 60 * 1000, // 10 mins
-    max: 100,
-});
-app.use(limiter);
 // Prevent http param pollution
 app.use((0, hpp_1.default)());
 // CORS configuration
@@ -103,7 +108,10 @@ const server = app.listen(PORT, async () => {
             password: "password123",
             status: "active",
         };
-        await User_1.User.create(userDetails);
+        const user = await User_1.User.create(userDetails);
+        await Settings_1.Settings.create({
+            user: user._id,
+        });
         (0, logger_1.logInfo)("Created first user!");
     }
     const existsAdmin = await User_1.User.findOne({ role: "admin" });
@@ -117,7 +125,10 @@ const server = app.listen(PORT, async () => {
             role: "admin",
             status: "active",
         };
-        await User_1.User.create(adminDetails);
+        const user = await User_1.User.create(adminDetails);
+        await Settings_1.Settings.create({
+            user: user._id,
+        });
         (0, logger_1.logInfo)("Created first admin");
     }
 });

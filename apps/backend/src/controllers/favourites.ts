@@ -2,35 +2,29 @@ import { Request, Response, NextFunction } from "express";
 import asyncHandler from "../middleware/async";
 import { AuthenticatedRequest } from "../middleware/auth";
 import ErrorResponse from "../utils/errorResponse";
-import { Favourites, IFavourites } from "../models/Favourites";
+import { Favourite, IFavourite } from "../models/Favourites";
 
 // Add a card to favourites
 export const AddToFavourites = asyncHandler(
   async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
     const userId = req.user!._id;
-    const cardIds = req.body.ids;
+    const cardIds = req.body.ids || [];
 
-    const cardsToBeAdded: number[] = [];
     // Check if it's already in favourites
-    cardIds.forEach(async (id: number) => {
-      const exists = await Favourites.findOne({ user: userId, card: id });
+    cardIds.forEach(async (id: string) => {
+      const exists = await Favourite.findOne({ user: userId, card: id });
 
-      if (!exists) {
-        cardsToBeAdded.push(id);
+      if (exists) {
+        return;
       }
+
+      await Favourite.create({ user: userId, card: id });
     });
 
-    if (cardsToBeAdded.length === 0) {
-      return next(new ErrorResponse("Cards already in favourites", 400));
-    }
-
-    const favourites: IFavourites[] = [];
-    cardsToBeAdded.forEach(async (id) => {
-      const favourite = await Favourites.create({ user: userId, card: id });
-      favourites.push(favourite);
-    });
+    const favourites = await Favourite.find();
 
     res.status(201).json({
+      success: true,
       message: "Added to favourites",
       favourites,
     });
@@ -43,7 +37,11 @@ export const RemoveFromFavourites = asyncHandler(
     const userId = req.user!._id;
     const cardId = req.params.id;
 
-    const deleted = await Favourites.findOneAndDelete({
+    if (!cardId) {
+      return next(new ErrorResponse("Card id s required", 400));
+    }
+
+    const deleted = await Favourite.findOneAndDelete({
       user: userId,
       card: cardId,
     });
@@ -52,7 +50,10 @@ export const RemoveFromFavourites = asyncHandler(
       return res.status(404).json({ message: "Favourite not found" });
     }
 
-    res.status(200).json({ message: "Removed from favourites" });
+    res.status(200).json({
+      success: true,
+      message: "Removed from favourites successfully!",
+    });
   }
 );
 
@@ -61,9 +62,14 @@ export const getMyFavourites = asyncHandler(
   async (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
     const userId = req.user!._id;
 
-    const favourites = await Favourites.find({ user: userId }).populate("card");
+    const favourites = await Favourite.find({ user: userId }).populate([
+      "card",
+      "user",
+    ]);
 
     res.status(200).json({
+      success: true,
+      message: "Favourites retrieved successfully",
       count: favourites.length,
       favourites,
     });

@@ -6,14 +6,12 @@ import { CardGrid } from "./card-grid";
 import { CardList } from "./card-list";
 import { ConfirmModal } from "./confirm-modal";
 import api from "../../lib/axios";
-import { useNavigate } from "react-router-dom";
 import useCriticalErrorStore from "../../stores/criticalErrorStore";
 import Loading from "../Loading";
 import { useAuth } from "../../context/AuthContext";
 import { ServerSettings } from "../Settings/settings-page";
-import { BusinessCard } from "@shared/types";
+import { BusinessCard, FavouriteCard } from "@shared/types";
 import useToastStore from "../../hooks/useToast";
-import { AxiosError } from "axios";
 
 // Define card types
 export type CardTemplate =
@@ -24,7 +22,7 @@ export type CardTemplate =
   | "elegant";
 
 export function Favourites() {
-  const [cards, setCards] = useState<BusinessCard[]>([]);
+  const [cards, setCards] = useState<FavouriteCard[]>([]);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState<string>("all");
@@ -34,13 +32,18 @@ export function Favourites() {
   const [showCopySuccess, setShowCopySuccess] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const naviagate = useNavigate();
   const setCrtitcaError = useCriticalErrorStore(
     (state) => state.setCriticalError
   );
   const setError = useCriticalErrorStore((state) => state.setError);
 
-  const { getUserSettings, setCardDisplayMode, user, checkAuth } = useAuth();
+  const {
+    getUserSettings,
+    setCardDisplayMode,
+    user,
+    checkAuth,
+    loading: authLoading,
+  } = useAuth();
   const { toast } = useToastStore();
 
   useEffect(() => {
@@ -54,19 +57,16 @@ export function Favourites() {
   useEffect(() => {
     const getCards = async () => {
       try {
-        setLoading(true);
         const response = await api.get("/favourites/me");
 
         if (response.data.success) {
-          setCards(response.data.data);
+          setCards(response.data.favourites);
         }
       } catch (err: any) {
-        if (err.status === 401) {
-          return naviagate("/unauthorized");
-        } else {
+        if (err.status !== 401) {
           setCrtitcaError(true);
           setError(new Error(err.response.data.message ?? "Error"));
-          console.error(err);
+          toast.error("An error occured while fetching your favourites");
         }
       } finally {
         setLoading(false);
@@ -77,16 +77,18 @@ export function Favourites() {
       const cardsJson = localStorage.getItem("favourites");
 
       if (cardsJson) {
-        setCards(JSON.parse(cardsJson) as BusinessCard[]);
+        const c = JSON.parse(cardsJson) as BusinessCard[];
+
+        setCards(c.map((cd) => ({ user: {}, card: cd })) as FavouriteCard[]);
         return;
       }
 
       setCards([]);
       return;
+    } else {
+      setCards([]);
+      getCards();
     }
-
-    setCards([]);
-    getCards();
   }, [user]);
 
   useEffect(() => {
@@ -111,7 +113,8 @@ export function Favourites() {
   }, []);
 
   // Filter cards based on search term and filters
-  const filteredCards = cards.filter((card) => {
+  const filteredCards = cards.filter((c) => {
+    const card = c.card;
     const matchesSearch =
       card.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       card.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -139,7 +142,7 @@ export function Favourites() {
 
         if (res.data.success) {
           toast.success("Card deleted successfully!");
-          setCards(cards.filter((card) => card.id !== cardToDelete.id));
+          setCards(cards.filter((card) => card.card.id !== cardToDelete.id));
         }
       } catch (error: any) {
         if (error.status === 404) {
@@ -159,7 +162,7 @@ export function Favourites() {
       const res = await api.get(`/businesscards/${card.id}/duplicate`);
 
       if (res.status === 201) {
-        setCards([...cards, res.data.data as BusinessCard]);
+        setCards([...cards, res.data.data as FavouriteCard]);
         toast.success("Card duplicated successfully!");
       }
     } catch (error: any) {
@@ -169,40 +172,31 @@ export function Favourites() {
     }
   };
 
-  const handleFavouriteCard = async (card: BusinessCard) => {
-    if (!user) {
-      const favs = localStorage.getItem("favourites");
+  const handleFavouriteCard = () => {};
 
-      if (favs) {
-        const favsR = JSON.parse(favs) as BusinessCard[];
+  const handleRemoveFromFavourites = async (card: BusinessCard) => {
+    if (user) {
+      try {
+        const res = await api.delete(`favourites/${card.id}`);
 
-        const exists = favsR.filter((c) => c.id === card.id);
-
-        if (exists.length > 0) {
-          toast.warning("Card already in favourites!");
-          return;
+        if (res.data.success) {
+          setCards(cards.filter((c) => c.card.id !== card.id));
+          toast.success("Card removed from favourites!");
         }
-
-        favsR.push(card);
-
-        localStorage.setItem("favourites", JSON.stringify(favsR));
-        toast.success("Card added to favourites!");
-        return;
+      } catch (error: any) {
+        if (error.status === 404) {
+          toast.error("Card not found!");
+        }
       }
+    } else {
+      let favsR = localStorage.getItem("favourites");
 
-      localStorage.setItem("favourites", JSON.stringify([card]));
-      return;
-    }
-
-    try {
-      const res = await api.post("/favourites/add", { id: card.id });
-
-      if (res.status === 200) {
-        toast.success("Card added to favourites");
-      }
-    } catch (error: any) {
-      if (error.status === 400) {
-        toast.warning("Card already in favourites");
+      if (favsR) {
+        let favs = JSON.parse(favsR) as BusinessCard[];
+        favs = favs.filter((c) => c.id !== card.id);
+        localStorage.setItem("favourites", JSON.stringify(favs));
+        setCards(cards.filter((c) => c.card.id !== card.id));
+        toast.success("Card removed from favourites!");
       }
     }
   };
@@ -307,7 +301,7 @@ export function Favourites() {
       </div>
 
       {/* Cards Display */}
-      {loading ? (
+      {loading || authLoading ? (
         <div className="flex justify-center items-center py-8 h-fit">
           <Loading />
         </div>
@@ -331,21 +325,23 @@ export function Favourites() {
         </div>
       ) : viewMode === "grid" ? (
         <CardGrid
-          cards={filteredCards}
+          cards={filteredCards.map((c) => c.card)}
           onDelete={handleDeleteCard}
           onDuplicate={handleDuplicateCard}
           onShare={handleShareCard}
           showCopySuccess={showCopySuccess}
           onFavourite={handleFavouriteCard}
+          onRemoveFromFavourite={handleRemoveFromFavourites}
         />
       ) : (
         <CardList
-          cards={filteredCards}
+          cards={filteredCards.map((c) => c.card)}
           onDelete={handleDeleteCard}
           onDuplicate={handleDuplicateCard}
           onShare={handleShareCard}
           showCopySuccess={showCopySuccess}
           onFavourite={handleFavouriteCard}
+          onRemoveFromFavourite={handleRemoveFromFavourites}
         />
       )}
 

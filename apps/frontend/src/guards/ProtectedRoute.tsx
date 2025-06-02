@@ -30,7 +30,7 @@ const ProtectedRoute: React.FC<{
   }
 
   if (roles && !roles.includes(user.role)) {
-    return <Navigate to="/cards" replace />;
+    return <Navigate to="/browse" replace />;
   }
 
   return <>{children}</>;

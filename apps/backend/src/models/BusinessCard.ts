@@ -1,28 +1,33 @@
-import mongoose, { type Document, Schema, type Model } from "mongoose"
+import mongoose, { type Document, Schema, type Model } from "mongoose";
 
-export type CardTemplate = "professional" | "creative" | "minimal" | "bold" | "elegant"
-export type CardStatus = "active" | "inactive" | "draft"
+export type CardTemplate =
+  | "professional"
+  | "creative"
+  | "minimal"
+  | "bold"
+  | "elegant";
+export type CardStatus = "active" | "inactive" | "draft";
 
 export interface IBusinessCard extends Document {
-  title: string
-  name: string
-  jobTitle: string
-  company: string
-  email: string
-  phone: string
-  website?: string
-  address?: string
-  template: CardTemplate
-  color: string
-  status: CardStatus
-  views: number
-  shares: number
-  owner: mongoose.Types.ObjectId
-  organization?: mongoose.Types.ObjectId
-  preview: string
-  shareableLink?: string
-  createdAt: Date
-  updatedAt: Date
+  title: string;
+  name: string;
+  jobTitle: string;
+  company: string;
+  email: string;
+  phone: string;
+  website?: string;
+  address?: string;
+  template: CardTemplate;
+  color: string;
+  status: CardStatus;
+  views: number;
+  shares: number;
+  owner: mongoose.Types.ObjectId;
+  organization?: mongoose.Types.ObjectId;
+  preview: string;
+  shareableLink?: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface IBusinessCardModel extends Model<IBusinessCard> {
@@ -56,7 +61,10 @@ const BusinessCardSchema = new Schema<IBusinessCard>(
       type: String,
       required: [true, "Email is required"],
       trim: true,
-      match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, "Please provide a valid email address"],
+      match: [
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+        "Please provide a valid email address",
+      ],
     },
     phone: {
       type: String,
@@ -83,7 +91,7 @@ const BusinessCardSchema = new Schema<IBusinessCard>(
     status: {
       type: String,
       enum: ["active", "inactive", "draft"],
-      default: "draft",
+      default: "active",
     },
     views: {
       type: Number,
@@ -114,16 +122,16 @@ const BusinessCardSchema = new Schema<IBusinessCard>(
     timestamps: true,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
-  },
-)
+  }
+);
 
 // Generate a shareable link when a card is created
 BusinessCardSchema.pre("save", function (this: IBusinessCard, next) {
   if (!this.shareableLink) {
-    this.shareableLink = `${process.env.FRONTEND_URL}/share/${this._id}`
+    this.shareableLink = `${process.env.FRONTEND_URL}/share/${this._id}`;
   }
-  next()
-})
+  next();
+});
 
 // Virtual for card collections
 BusinessCardSchema.virtual("collections", {
@@ -131,7 +139,9 @@ BusinessCardSchema.virtual("collections", {
   localField: "_id",
   foreignField: "card",
   justOne: false,
-})
+});
 
-export const BusinessCard = mongoose.model<IBusinessCard, IBusinessCardModel>("BusinessCard", BusinessCardSchema)
-
+export const BusinessCard = mongoose.model<IBusinessCard, IBusinessCardModel>(
+  "BusinessCard",
+  BusinessCardSchema
+);

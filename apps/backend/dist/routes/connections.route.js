@@ -15,16 +15,18 @@ router.use(auth_1.protect);
 router.route("/").get(getConnections).post(createConnection);
 router
     .route("/:id")
-    .get((0, advancedResults_1.default)(Connection_1.Connection, [
-    {
-        path: "contact",
-        select: "firstName lastName email avatar",
-    },
-    {
-        path: "card",
-        select: "title name jobTitle company email phone template color",
-    },
-]), getConnection)
+    .get((0, advancedResults_1.default)(Connection_1.Connection, {
+    populate: [
+        {
+            path: "contact",
+            select: "firstName lastName email avatar",
+        },
+        {
+            path: "card",
+            select: "title name jobTitle company email phone template color",
+        },
+    ],
+}), getConnection)
     .patch(updateConnection)
     .delete(deleteConnection);
 // Connection actions

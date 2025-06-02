@@ -61,7 +61,10 @@ const BusinessCardSchema = new mongoose_1.Schema({
         type: String,
         required: [true, "Email is required"],
         trim: true,
-        match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, "Please provide a valid email address"],
+        match: [
+            /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+            "Please provide a valid email address",
+        ],
     },
     phone: {
         type: String,
@@ -88,7 +91,7 @@ const BusinessCardSchema = new mongoose_1.Schema({
     status: {
         type: String,
         enum: ["active", "inactive", "draft"],
-        default: "draft",
+        default: "active",
     },
     views: {
         type: Number,

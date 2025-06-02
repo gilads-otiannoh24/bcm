@@ -7,5 +7,5 @@ const router = express.Router();
 router.use(auth_1.protect);
 router.get("/me", favourites_1.getMyFavourites);
 router.post("/add", favourites_1.AddToFavourites);
-router.post("/remove/:id", favourites_1.RemoveFromFavourites);
+router.delete("/:id", favourites_1.RemoveFromFavourites);
 exports.default = router;

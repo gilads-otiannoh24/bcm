@@ -6,6 +6,7 @@ import { useAuth } from "../context/AuthContext";
 import Sidebar from "./Sidebar";
 import useOnRouteChange from "../hooks/useOnRouteChange";
 import { useSidebarStore } from "../stores/sidebarStore";
+import Footer from "./Footer";
 
 export const Layout: React.FC = () => {
   const { user, logout } = useAuth();
@@ -92,6 +93,8 @@ export const Layout: React.FC = () => {
           <main className="flex-grow container mx-auto bg-base-200 px-4 py-8">
             <Outlet />
           </main>
+
+          <Footer />
         </div>
 
         {/* Sidebar */}

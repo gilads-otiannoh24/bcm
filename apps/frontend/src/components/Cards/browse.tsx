@@ -39,7 +39,13 @@ export function BrowseCards() {
   );
   const setError = useCriticalErrorStore((state) => state.setError);
 
-  const { getUserSettings, setCardDisplayMode, user, checkAuth } = useAuth();
+  const {
+    getUserSettings,
+    setCardDisplayMode,
+    user,
+    checkAuth,
+    loading: authLoading,
+  } = useAuth();
   const { toast } = useToastStore();
 
   useEffect(() => {
@@ -53,7 +59,6 @@ export function BrowseCards() {
   useEffect(() => {
     const getCards = async () => {
       try {
-        setLoading(true);
         const response = await api.get("/businesscards?status=active");
 
         if (response.data.success) {
@@ -77,7 +82,6 @@ export function BrowseCards() {
   useEffect(() => {
     const getPrefferedViewMode = async () => {
       try {
-        setLoading(true);
         const response = await getUserSettings();
 
         const userSettings = response.data.data as ServerSettings;
@@ -86,14 +90,43 @@ export function BrowseCards() {
           setCardDisplayMode(userSettings.cardLayout);
           setViewMode(userSettings.cardLayout);
         }
-      } catch (error) {
-      } finally {
-        setLoading(false);
-      }
+      } catch (error) {}
     };
 
     getPrefferedViewMode();
   }, []);
+
+  useEffect(() => {
+    // check for favourites in localStorage and add to users favourites automatically and reset
+    const addFavouritesAutomatically = async () => {
+      const favsJson = localStorage.getItem("favourites");
+
+      if (!favsJson) return;
+
+      const favs = JSON.parse(favsJson) as BusinessCard[];
+
+      if (favs.length === 0) return;
+
+      try {
+        const res = await api.post("/favourites/add", {
+          ids: favs.map((f) => f.id),
+        });
+
+        if (res.status === 201) {
+          localStorage.removeItem("favourites");
+          toast.success("Favourites synced successfully!");
+        }
+      } catch (error: any) {
+        if (error.status === 400) {
+          toast.error("Error updating your favourites!");
+        }
+      }
+    };
+
+    if (user) {
+      addFavouritesAutomatically();
+    }
+  }, [authLoading]);
 
   // Filter cards based on search term and filters
   const filteredCards = cards.filter((card) => {
@@ -172,22 +205,21 @@ export function BrowseCards() {
 
         localStorage.setItem("favourites", JSON.stringify(favsR));
         toast.success("Card added to favourites!");
-        return;
+      } else {
+        localStorage.setItem("favourites", JSON.stringify([card]));
+        toast.success("Card added to favourites!");
       }
+    } else {
+      try {
+        const res = await api.post("/favourites/add", { ids: [card.id] });
 
-      localStorage.setItem("favourites", JSON.stringify([card]));
-      return;
-    }
-
-    try {
-      const res = await api.post("/favourites/add", { id: card.id });
-
-      if (res.status === 200) {
-        toast.success("Card added to favourites");
-      }
-    } catch (error: any) {
-      if (error.status === 400) {
-        toast.warning("Card already in favourites");
+        if (res.status === 201) {
+          toast.success("Card added to favourites");
+        }
+      } catch (error: any) {
+        if (error.status === 400) {
+          toast.warning("Card already in favourites");
+        }
       }
     }
   };
@@ -292,28 +324,30 @@ export function BrowseCards() {
       </div>
 
       {/* Cards Display */}
-      {loading ? (
-        <div className="flex justify-center items-center py-8 h-fit">
-          <Loading />
-        </div>
-      ) : filteredCards.length === 0 ? (
-        <div className="bg-base-100 p-8 rounded-lg shadow-md text-center">
-          <div className="flex justify-center mb-4">
-            <div className="bg-base-200 p-4 rounded-full">
-              <CreditCard className="h-8 w-8 text-base-content/50" />
-            </div>
+      {filteredCards.length === 0 ? (
+        loading || authLoading ? (
+          <div className="flex justify-center items-center py-8 h-fit">
+            <Loading />
           </div>
-          <h3 className="text-xl font-bold mb-2">No cards found</h3>
-          <p className="text-base-content/70 mb-6">
-            {cards.length === 0
-              ? "There are no business cards to browse yet."
-              : "No cards match your current filters."}
-          </p>
-          <button className="btn btn-outline" onClick={resetFilters}>
-            <Filter className="h-4 w-4 mr-2" />
-            Reset Filters
-          </button>
-        </div>
+        ) : (
+          <div className="bg-base-100 p-8 rounded-lg shadow-md text-center">
+            <div className="flex justify-center mb-4">
+              <div className="bg-base-200 p-4 rounded-full">
+                <CreditCard className="h-8 w-8 text-base-content/50" />
+              </div>
+            </div>
+            <h3 className="text-xl font-bold mb-2">No cards found</h3>
+            <p className="text-base-content/70 mb-6">
+              {cards.length === 0
+                ? "You have no business cards yet."
+                : "No cards match your current filters."}
+            </p>
+            <button className="btn btn-outline" onClick={resetFilters}>
+              <Filter className="h-4 w-4 mr-2" />
+              Reset Filters
+            </button>
+          </div>
+        )
       ) : viewMode === "grid" ? (
         <CardGrid
           cards={filteredCards}
